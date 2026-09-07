@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+  --color-burgundy: #3D0C11;
+  --color-burgundy-light: #4A151B;
+  --color-burgundy-muted: #5C1F26;
+  --color-crimson: #C81D25;
+  --color-crimson-dark: #A31C24;
+  --color-crimson-light: #E03040;
+  --color-offwhite: #FDFBFB;
+  --color-offwhite-dark: #F0EBEB;
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-light: #2E2E2E;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  color: var(--color-charcoal);
+}
+
+.font-display {
+  font-family: var(--font-serif);
+}
+
+:focus-visible {
+  outline: 3px solid #C81D25;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: #C81D25;
+  color: #FDFBFB;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3D0C11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C81D25;
+  border-radius: 3px;
+}
+
+.editorial-line {
+  width: 3px;
+  height: 40px;
+  background: #C81D25;
+  display: inline-block;
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.tab-active {
+  background: #C81D25;
+  color: #FDFBFB;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font-sans);
+}

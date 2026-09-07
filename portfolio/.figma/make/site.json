@@ -1,0 +1,18 @@
+{
+  "title": "Joana Sardinha | UX-UI Designer",
+  "description": "Hi! I'm Joana. \nA Senior UX/UI Designer turning messy enterprise problems into simple, inclusive digital experiences. Powered by AI curiosity, accessibility-first thinking, and design that actually works for everyone (with a bit of fun along the way).",
+  "language": "en-GB",
+  "robots": {
+    "index": false
+  },
+  "icons": {
+    "icon": "/.figma/make/favicon.png"
+  },
+  "openGraph": {
+    "image": "/.figma/make/social-image.png"
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
