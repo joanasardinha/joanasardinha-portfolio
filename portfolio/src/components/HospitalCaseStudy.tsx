@@ -3,6 +3,13 @@ import {
   X, ArrowRight, Zap, Users, Clock, CheckCircle,
   Shield, Brain, Wifi, Cpu, FileText,
 } from "lucide-react";
+import kioskImg from "../imports/Gemini_Generated_Image_yi0wnsyi0wnsyi0w_1.png";
+import room304Img from "../imports/Gemini_Generated_Image_94rj7h94rj7h94rj_1.png";
+import nursingImg from "../imports/Gemini_Generated_Image_vn5cndvn5cndvn5c__1_.png";
+import screen1Img from "../imports/Hospital_Patient_Intake_Interface-1.png";
+import screen2Img from "../imports/Hospital_Patient_Intake_Interface-2.png";
+import screen3Img from "../imports/Hospital_Patient_Intake_Interface-3.png";
+import screen4Img from "../imports/Hospital_Patient_Intake_Interface-4.png";
 
 const NAVY  = "#030C23";
 const NAVY2 = "#0A1931";
@@ -749,6 +756,55 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
             {/* Hero phone preview */}
             <div className="hidden lg:block flex-shrink-0">
               <ScreenComplete />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── JOHN'S JOURNEY ── */}
+      <section style={{ background: "#f3f4f8" }} className="px-6 lg:px-16 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <span style={{ color: BLUE, fontSize: 10, letterSpacing: "0.3em", fontWeight: 700,
+              textTransform: "uppercase", display: "block", marginBottom: 12 }}>John's 4-Step Journey</span>
+            <h2 className="font-serif" style={{ fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
+              color: NAVY, fontWeight: 900, lineHeight: 1.2 }}>
+              From Kiosk to Room in Under 3 Minutes
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            <div style={{ textAlign: "center" }}>
+              <img src={kioskImg} alt="Step 1: Kiosk QR Scan"
+                style={{ width: "100%", maxWidth: "300px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
+              <h3 style={{ color: NAVY, fontSize: 16, fontWeight: 800, marginBottom: 8 }}>
+                Step 1: Arrival & Sync
+              </h3>
+              <p style={{ color: SLATE, fontSize: 14, lineHeight: 1.6 }}>
+                John scans the kiosk's QR code with his phone, instantly linking his mobile app to the kiosk display for real-time synchronization.
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center" }}>
+              <img src={room304Img} alt="Step 2-3: Payment & Wristband"
+                style={{ width: "100%", maxWidth: "300px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
+              <h3 style={{ color: NAVY, fontSize: 16, fontWeight: 800, marginBottom: 8 }}>
+                Step 2-3: AI Intake & Print
+              </h3>
+              <p style={{ color: SLATE, fontSize: 14, lineHeight: 1.6 }}>
+                While John uploads docs and pays €120 via Apple Pay, three AI agents validate credentials, verify insurance, and authorize admission—then the kiosk prints his wristband.
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center" }}>
+              <img src={nursingImg} alt="Step 4: Room Entry & Notification"
+                style={{ width: "100%", maxWidth: "300px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
+              <h3 style={{ color: NAVY, fontSize: 16, fontWeight: 800, marginBottom: 8 }}>
+                Step 4: Smart Entry
+              </h3>
+              <p style={{ color: SLATE, fontSize: 14, lineHeight: 1.6 }}>
+                John scans his wristband at Room 304's door, it unlocks instantly, and the nurse is automatically notified with his digital chart ready.
+              </p>
             </div>
           </div>
         </div>
