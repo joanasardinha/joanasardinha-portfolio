@@ -204,7 +204,12 @@ export default function Portfolio({ onOpenPhotography }: { onOpenPhotography?: (
       return;
     }
     if (modal.password === "sardinha2024") {
-      setModal((m) => ({ ...m, passwordSuccess: true, passwordError: "" }));
+      if (modal.project?.hasCaseStudy) {
+        sessionStorage.setItem(`project_${modal.project.id}`, "unlocked");
+        window.location.href = `/projects/${modal.project.id}`;
+      } else {
+        setModal((m) => ({ ...m, passwordSuccess: true, passwordError: "" }));
+      }
     } else {
       setModal((m) => ({ ...m, passwordError: "Incorrect password. Try requesting access instead." }));
     }

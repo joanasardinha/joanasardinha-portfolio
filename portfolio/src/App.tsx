@@ -8,13 +8,23 @@ import Articles from "./components/Articles";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
 import PhotographyPage from "./components/PhotographyPage";
+import ProjectPage from "./components/ProjectPage";
 
 const sectionIds = ["hero", "work", "experience", "articles", "services"];
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [photographyOpen, setPhotographyOpen] = useState(false);
+  const [projectId, setProjectId] = useState<string | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const match = pathname.match(/^\/projects\/(.+)$/);
+    if (match) {
+      setProjectId(match[1]);
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,6 +57,17 @@ export default function App() {
       window.scrollTo({ top, behavior: "smooth" });
     }
   };
+
+  if (projectId) {
+    return (
+      <ProjectPage
+        projectId={projectId}
+        onBack={() => {
+          window.history.back();
+        }}
+      />
+    );
+  }
 
   if (photographyOpen) {
     return (

@@ -5,5 +5,11 @@
   "framework": "vite",
   "env": {
     "VITE_CONFIG_NATIVE_IGNORE_WARNING": "true"
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/projects/:id",
+      "destination": "/index.html"
+    }
+  ]
 }
