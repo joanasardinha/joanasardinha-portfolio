@@ -566,7 +566,7 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
                   marginBottom: 16,
                 }}
               >
-                Case Study · Fintech UX/UI · 2025
+                OutSystems Project; Banking; 2024-2025
               </span>
               <h1
                 className="font-serif"
