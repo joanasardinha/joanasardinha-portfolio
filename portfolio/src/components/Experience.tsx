@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Download, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
 
 const timeline = [
@@ -100,8 +100,23 @@ const skills: { label: string; items: string[] }[] = [
 
 export default function Experience() {
   const [active, setActive] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const prev = () => setActive((i) => Math.max(0, i - 1));
   const next = () => setActive((i) => Math.min(timeline.length - 1, i + 1));
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) next();
+    else if (diff < -threshold) prev();
+  };
 
   return (
     <section
@@ -134,7 +149,7 @@ export default function Experience() {
 
         {/* Mobile Carousel */}
         <div className="lg:hidden mb-10">
-          <div className="overflow-hidden border border-white/15 mb-4">
+          <div className="overflow-hidden border border-white/15 mb-4" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${active * 100}%)` }}

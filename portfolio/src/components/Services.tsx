@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Users, Building2, CheckCircle2, AlertCircle, Clock, ChevronDown, Check, ChevronLeft, ChevronRight } from "lucide-react";
 
 type FormState<T> = { data: T; submitted: boolean; error: string };
@@ -37,6 +37,8 @@ export default function Services() {
   const [openForm, setOpenForm] = useState<"mentoring" | "consulting" | null>(null);
   const [activeCard, setActiveCard] = useState(0);
   const cards: ("mentoring" | "consulting")[] = ["mentoring", "consulting"];
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const [mentoring, setMentoring] = useState<FormState<MentoringForm>>({
     data: { name: "", email: "", level: "", goal: "", time: "" },
@@ -114,6 +116,18 @@ export default function Services() {
     setOpenForm((prev) => (prev === type ? null : type));
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) setActiveCard(1);
+    else if (diff < -threshold) setActiveCard(0);
+  };
+
   const fieldClass =
     "w-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-offwhite placeholder-offwhite/30 focus:outline-none focus:border-crimson transition-colors";
   const labelClass = "block text-offwhite/80 text-xs font-semibold tracking-widest uppercase mb-2";
@@ -138,7 +152,7 @@ export default function Services() {
 
         {/* ── Mobile carousel ── */}
         <div className="lg:hidden mb-4">
-          <div className="overflow-hidden border border-white/15">
+          <div className="overflow-hidden border border-white/15" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <div
               className="flex transition-transform duration-400 ease-in-out"
               style={{ transform: `translateX(-${activeCard * 100}%)` }}
