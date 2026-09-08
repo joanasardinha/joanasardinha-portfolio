@@ -10,6 +10,7 @@ import springMascot from "../imports/spring-mascot.png";
 import springMockup from "../imports/spring-mockup.svg";
 import springMidFiScreen from "../imports/spring-midfi-screen.png";
 import springDepositsScreen from "../imports/spring-deposits-screen.jpg";
+import springHandSketch from "../imports/spring-hand-sketch.jpg";
 
 const CREAM = "#FAF7F2";
 const PEACH = "#F2C5A0";
@@ -1046,6 +1047,10 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
               ) : phase === 2 ? (
                 <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
                   <img src={springDepositsScreen} alt="Spring Savings Deposits Journey" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </Phone>
+              ) : phase === 1 ? (
+                <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
+                  <img src={springHandSketch} alt="Spring Savings Hand-Drawn Sketch" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </Phone>
               ) : (
                 <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
