@@ -11,7 +11,6 @@ const navLinks = [
   { id: "experience", label: "Experience" },
   { id: "articles", label: "Articles" },
   { id: "services", label: "Services" },
-  { id: "contact", label: "Contact" },
 ];
 
 export default function Nav({ activeSection, onNavigate }: NavProps) {

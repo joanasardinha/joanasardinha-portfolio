@@ -22,7 +22,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer role="contentinfo" className="bg-burgundy border-t border-white/10">
+    <footer role="contentinfo" className="bg-slate-900 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
