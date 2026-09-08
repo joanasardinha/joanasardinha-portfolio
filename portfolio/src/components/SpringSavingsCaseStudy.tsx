@@ -601,7 +601,6 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
                 {[
                   ["Role", "Senior Lead UX/UI Designer"],
                   ["Platform", "iOS & Android · OutSystems"],
-                  ["Timeline", "6 Months"],
                   ["Award", "OutSystems Innovation Award 2025"],
                 ].map(([label, value]) => (
                   <div
