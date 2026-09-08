@@ -3,6 +3,8 @@ import {
   X, Palette, Globe, Printer, CheckCircle,
   ArrowRight, Code, Users, Calendar, Ticket,
 } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import PasswordModal from "./PasswordModal";
 
 const OG = "#FF5500";
 const BK = "#0D0D0D";
@@ -532,6 +534,7 @@ function Billboard() {
 /* ── main component ── */
 export default function DevSummitCaseStudy({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState<"brand" | "digital" | "physical">("brand");
+  const { isProtected, verifyPassword } = usePasswordProtection();
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -546,6 +549,10 @@ export default function DevSummitCaseStudy({ onClose }: { onClose: () => void })
     { key: "digital" as const, label: "Digital Experience", icon: Globe },
     { key: "physical" as const, label: "Physical Collateral", icon: Printer },
   ];
+
+  if (isProtected) {
+    return <PasswordModal onSubmit={verifyPassword} />;
+  }
 
   return (
     <div

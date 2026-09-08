@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { X, ArrowRight, Layers, Cpu, GitBranch, Shield, Zap, CheckCircle, AlertTriangle, RefreshCw, Clock, Users } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import PasswordModal from "./PasswordModal";
 
 const NAVY   = "#0F172A";
 const NAVY2  = "#1E293B";
@@ -300,6 +302,7 @@ function ArchDiagram() {
 export default function AgenticDSCaseStudy({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState<Tab>("architecture");
   const [patternFilter, setPatternFilter] = useState<"all" | "pipeline" | "hitl" | "intake" | "copilot">("all");
+  const { isProtected, verifyPassword } = usePasswordProtection();
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -497,6 +500,10 @@ export default function AgenticDSCaseStudy({ onClose }: { onClose: () => void })
     { pattern: "MultiStepIntakeFlow",    osComponent: "WizardPattern · Reactive", rationale: "Step driven by CurrentStep integer var; AI validates OnChange",    status: "In Review"  as const },
     { pattern: "PromptSuggestionBar",    osComponent: "TagCloud · StaticRecord",  rationale: "Contextual prompts from Aggregate with WHERE filtering by screen", status: "Planned"    as const },
   ];
+
+  if (isProtected) {
+    return <PasswordModal onSubmit={verifyPassword} />;
+  }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto"

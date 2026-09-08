@@ -6,11 +6,10 @@ import Experience from "./components/Experience";
 import Learning from "./components/Learning";
 import Articles from "./components/Articles";
 import Services from "./components/Services";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import PhotographyPage from "./components/PhotographyPage";
 
-const sectionIds = ["hero", "work", "experience", "articles", "services", "contact"];
+const sectionIds = ["hero", "work", "experience", "articles", "services"];
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -84,9 +83,6 @@ export default function App() {
         </div>
         <div id="services">
           <Services />
-        </div>
-        <div id="contact">
-          <Contact />
         </div>
       </main>
       <Footer />

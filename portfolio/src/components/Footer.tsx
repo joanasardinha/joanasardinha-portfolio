@@ -1,4 +1,4 @@
-import { Mail, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,25 +50,6 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div>
-            <p className="text-offwhite text-xs tracking-widest uppercase font-semibold mb-5">Contact</p>
-            <a
-              href="mailto:hello@sardinha.design"
-              className="flex items-center gap-2 text-offwhite/70 hover:text-offwhite text-sm transition-colors mb-4 focus-visible:outline-crimson"
-            >
-              <Mail size={14} className="text-crimson" />
-              hello@sardinha.design
-            </a>
-            <p className="text-offwhite/30 text-xs mt-6">
-              Based in Lisbon, Portugal
-              <br />
-              CET Timezone · UTC+0/+1
-            </p>
-            <div className="flex items-center gap-2 mt-4">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
-              <span className="text-green-400 text-xs">Available for new projects</span>
-            </div>
-          </div>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8">

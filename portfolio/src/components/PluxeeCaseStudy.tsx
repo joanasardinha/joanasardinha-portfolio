@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { X, Lock, Mail, Eye, EyeOff, ArrowRight, CheckCircle2, AlertCircle, Shield, Users, TrendingUp, Award } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import PasswordModal from "./PasswordModal";
 import workshopImg from "@/imports/C186DFB0-BF81-4D2A-9A92-A99ED28E77D9_1_102_o.jpeg";
 import awardDetailImg from "@/imports/Award_Detail.png";
 import awardsListImg from "@/imports/Awards_full_list.png";
@@ -523,6 +525,7 @@ export default function PluxeeCaseStudy({ onClose }: { onClose: () => void }) {
   const [unlocked, setUnlocked] = useState(false);
   const [tab, setTab] = useState<ActiveTab>("workshop");
   const [screenIdx, setScreenIdx] = useState(0);
+  const { isProtected, verifyPassword } = usePasswordProtection();
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -549,6 +552,10 @@ export default function PluxeeCaseStudy({ onClose }: { onClose: () => void }) {
     { id: "hr",         label: "3. HR Portal" },
     { id: "backoffice", label: "4. Backoffice & Sales" },
   ];
+
+  if (isProtected) {
+    return <PasswordModal onSubmit={verifyPassword} />;
+  }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto"

@@ -3,6 +3,8 @@ import {
   X, ArrowRight, Zap, Users, Clock, CheckCircle,
   Shield, Brain, Wifi, Cpu, FileText,
 } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import PasswordModal from "./PasswordModal";
 import kioskImg from "../imports/Gemini_Generated_Image_yi0wnsyi0wnsyi0w_1.png";
 import room304Img from "../imports/Gemini_Generated_Image_94rj7h94rj7h94rj_1.png";
 import nursingImg from "../imports/Gemini_Generated_Image_vn5cndvn5cndvn5c__1_.png";
@@ -618,6 +620,7 @@ function AgentPipeline({ step }: { step: 1 | 2 | 3 | 4 }) {
 /* ── main ── */
 export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
+  const { isProtected, verifyPassword } = usePasswordProtection();
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -663,6 +666,10 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
   };
 
   const copy = stepCopy[step];
+
+  if (isProtected) {
+    return <PasswordModal onSubmit={verifyPassword} />;
+  }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto"

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { X, ArrowRight, Zap, Leaf, MapPin, Clock, Navigation, Battery, Bike } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import PasswordModal from "./PasswordModal";
 
 const DARK   = "#121D24";
 const DARK2  = "#1E293B";
@@ -355,6 +357,7 @@ type Tab = "timeline" | "features" | "mockups";
 export default function MobilityCaseStudy({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState<Tab>("timeline");
   const [mockupScreen, setMockupScreen] = useState<1 | 2 | 3 | 4>(1);
+  const { isProtected, verifyPassword } = usePasswordProtection();
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -460,6 +463,10 @@ export default function MobilityCaseStudy({ onClose }: { onClose: () => void }) 
     3: <ScreenMap />,
     4: <ScreenCarbon />,
   };
+
+  if (isProtected) {
+    return <PasswordModal onSubmit={verifyPassword} />;
+  }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto"

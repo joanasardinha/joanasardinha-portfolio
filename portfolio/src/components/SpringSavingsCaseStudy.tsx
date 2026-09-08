@@ -3,6 +3,8 @@ import {
   X, ArrowRight, TrendingUp, Users, Award,
   MessageSquare, CheckCircle, PiggyBank, Zap, ShieldCheck,
 } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import PasswordModal from "./PasswordModal";
 
 const CREAM = "#FAF7F2";
 const PEACH = "#F2C5A0";
@@ -432,6 +434,7 @@ function BusStop() {
 export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => void }) {
   const [phase, setPhase] = useState<1 | 2 | 3 | 4>(4);
   const [tab, setTab] = useState<"problem" | "process" | "results">("problem");
+  const { isProtected, verifyPassword } = usePasswordProtection();
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -468,6 +471,10 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
     3: BLUE,
     4: `${CORAL}60`,
   };
+
+  if (isProtected) {
+    return <PasswordModal onSubmit={verifyPassword} />;
+  }
 
   return (
     <div

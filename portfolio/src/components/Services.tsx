@@ -57,7 +57,7 @@ export default function Services() {
   const updateConsulting = (field: keyof ConsultingForm, value: string) =>
     setConsulting((s) => ({ ...s, data: { ...s.data, [field]: value }, error: "" }));
 
-  const submitMentoring = (e: React.FormEvent) => {
+  const submitMentoring = async (e: React.FormEvent) => {
     e.preventDefault();
     const { name, email, level, goal } = mentoring.data;
     if (!name || !email || !level || !goal) {
@@ -68,17 +68,35 @@ export default function Services() {
       setMentoring((s) => ({ ...s, error: "Please enter a valid email address." }));
       return;
     }
-    setMentoring((s) => ({ ...s, submitted: true, error: "" }));
+    try {
+      await fetch("https://formspree.io/f/xzzyxxwp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, level, goal, type: "Mentoring" }),
+      });
+      setMentoring((s) => ({ ...s, submitted: true, error: "" }));
+    } catch (err) {
+      setMentoring((s) => ({ ...s, error: "Failed to send. Please try again." }));
+    }
   };
 
-  const submitConsulting = (e: React.FormEvent) => {
+  const submitConsulting = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { name, budget, overview } = consulting.data;
+    const { name, company, budget, overview } = consulting.data;
     if (!name || !budget || !overview) {
       setConsulting((s) => ({ ...s, error: "Please fill in all required fields." }));
       return;
     }
-    setConsulting((s) => ({ ...s, submitted: true, error: "" }));
+    try {
+      await fetch("https://formspree.io/f/xzzyxxwp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, company, budget, overview, type: "Consulting" }),
+      });
+      setConsulting((s) => ({ ...s, submitted: true, error: "" }));
+    } catch (err) {
+      setConsulting((s) => ({ ...s, error: "Failed to send. Please try again." }));
+    }
   };
 
   const toggleForm = (type: "mentoring" | "consulting") => {

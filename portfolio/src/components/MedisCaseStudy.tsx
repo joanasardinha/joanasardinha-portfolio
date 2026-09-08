@@ -4,6 +4,8 @@ import {
   FileText, Star, TrendingUp, Clock, Users,
   CheckCircle, PhoneOff, ArrowRight,
 } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import PasswordModal from "./PasswordModal";
 
 const NAVY = "#002B66";
 const DARK = "#051A44";
@@ -274,6 +276,7 @@ function FeatureRow({
 /* ─── Main component ─── */
 export default function MedisCaseStudy({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState<"challenge" | "approach" | "results">("challenge");
+  const { isProtected, verifyPassword } = usePasswordProtection();
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -286,6 +289,10 @@ export default function MedisCaseStudy({ onClose }: { onClose: () => void }) {
     { key: "approach", label: "Design Approach" },
     { key: "results", label: "Impact & Results" },
   ] as const;
+
+  if (isProtected) {
+    return <PasswordModal onSubmit={verifyPassword} />;
+  }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto" style={{ background: DARK }}>
