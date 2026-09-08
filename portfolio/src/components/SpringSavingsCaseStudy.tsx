@@ -1040,9 +1040,13 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
               {phase === 4 ? (
                 <img src={springMockup} alt="Spring Savings Hi-Fi Mockup" style={{ maxWidth: 400, width: "100%", height: "auto" }} />
               ) : phase === 3 ? (
-                <img src={springMidFiScreen} alt="Spring Savings Mid-Fi Screen" style={{ maxWidth: 200, width: "100%", height: "auto" }} />
+                <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
+                  <img src={springMidFiScreen} alt="Spring Savings Mid-Fi Screen" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </Phone>
               ) : phase === 2 ? (
-                <img src={springDepositsScreen} alt="Spring Savings Deposits Journey" style={{ maxWidth: 300, width: "100%", height: "auto" }} />
+                <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
+                  <img src={springDepositsScreen} alt="Spring Savings Deposits Journey" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </Phone>
               ) : (
                 <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
                   {phaseScreen[phase]}
