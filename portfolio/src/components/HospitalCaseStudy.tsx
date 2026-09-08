@@ -954,7 +954,6 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
                   </div>
                 </div>
               )}
-              <AgentPipeline step={step} />
             </div>
           </div>
         </div>
