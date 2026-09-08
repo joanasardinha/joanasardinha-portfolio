@@ -1258,65 +1258,6 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
         </div>
       </section>
 
-      {/* ── OOH CAMPAIGN ── */}
-      <section
-        style={{ background: CREAM }}
-        className="px-6 lg:px-16 py-14"
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span
-                style={{
-                  color: CORAL,
-                  fontSize: 11,
-                  letterSpacing: "0.3em",
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  display: "block",
-                  marginBottom: 12,
-                }}
-              >
-                Cross-Channel Consistency
-              </span>
-              <h2
-                className="font-serif"
-                style={{
-                  fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)",
-                  color: NAVY,
-                  fontWeight: 800,
-                  lineHeight: 1.2,
-                  marginBottom: 14,
-                }}
-              >
-                From phone screen to{" "}
-                <span style={{ color: CORAL }}>Holborn Circus.</span>
-              </h2>
-              <p style={{ color: `${NAVY}70`, lineHeight: 1.75, fontSize: 15, marginBottom: 16 }}>
-                The same warm peach palette, circular goal ring, and canine
-                companion that live inside the app appear verbatim on JCDecaux
-                bus-stop panels across London and beyond — connecting the digital
-                experience to the physical world.
-              </p>
-              <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {[
-                  "Bus stop & digital out-of-home (JCDecaux)",
-                  "National press advertising",
-                  "Social media creative suite",
-                  "App Store & Google Play assets",
-                ].map((item) => (
-                  <li key={item} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <CheckCircle size={13} color={CORAL} style={{ flexShrink: 0 }} />
-                    <span style={{ color: `${NAVY}70`, fontSize: 14 }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <BusStop />
-          </div>
-        </div>
-      </section>
-
       {/* ── RESULTS FOOTER ── */}
       <section
         style={{ background: NAVY }}
