@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import faviconImg from "../imports/favicon.png";
 
 interface NavProps {
   activeSection: string;
@@ -41,9 +42,7 @@ export default function Nav({ activeSection, onNavigate }: NavProps) {
             className="flex items-center gap-3 group focus-visible:outline-crimson"
             aria-label="Sardinha Design – Go to top"
           >
-            <div className="w-8 h-8 bg-crimson flex items-center justify-center">
-              <span className="text-offwhite font-serif font-black text-sm leading-none">S</span>
-            </div>
+            <img src={faviconImg} alt="Sardinha Design Logo" className="w-8 h-8" />
             <span className="font-serif font-black text-offwhite text-lg tracking-widest uppercase">
               SARDINHA
             </span>
