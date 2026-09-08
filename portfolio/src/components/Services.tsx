@@ -71,7 +71,7 @@ export default function Services() {
     }
 
     // Send email in background (don't wait for response)
-    fetch("https://formspree.io/f/xzzyxxwp", {
+    fetch("https://formspree.io/f/xyeybdrq", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -96,7 +96,7 @@ export default function Services() {
     }
 
     // Send email in background (don't wait for response)
-    fetch("https://formspree.io/f/xzzyxxwp", {
+    fetch("https://formspree.io/f/xeaqprjj", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
