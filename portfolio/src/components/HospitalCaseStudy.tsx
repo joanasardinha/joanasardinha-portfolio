@@ -711,7 +711,7 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
             <div style={{ flex: 1 }}>
               <span style={{ color: MINT, fontSize: 10, letterSpacing: "0.35em", fontWeight: 700,
                 textTransform: "uppercase", display: "block", marginBottom: 16, fontFamily: "monospace" }}>
-                Case Study · Healthcare UX · Agentic AI · 2025
+                Case Study · Healthcare UX · Agentic AI · 2026
               </span>
               <h1 className="font-serif" style={{ fontSize: "clamp(1.8rem, 4vw, 3.4rem)",
                 color: "white", fontWeight: 900, lineHeight: 1.08, marginBottom: 16 }}>
@@ -731,7 +731,6 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
                 {[
                   ["Role", "Lead UX/UI Designer"],
                   ["Scope", "Multichannel · AI Agents · Kiosk · Mobile"],
-                  ["Timeline", "3 Months"],
                 ].map(([label, value]) => (
                   <div key={label} style={{ background: "rgba(255,255,255,0.06)",
                     border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: "8px 14px" }}>
@@ -967,69 +966,6 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
         </div>
       </section>
 
-      {/* ── ARCHITECTURE / TERMINAL ── */}
-      <section style={{ background: NAVY }} className="px-6 lg:px-16 py-12">
-        <div className="max-w-6xl mx-auto">
-          <span style={{ color: MINT, fontSize: 10, letterSpacing: "0.35em", fontWeight: 700,
-            textTransform: "uppercase", display: "block", marginBottom: 20, fontFamily: "monospace" }}>
-            System Architecture
-          </span>
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Patient-facing */}
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: 10, overflow: "hidden" }}>
-              <div style={{ background: "rgba(37,99,235,0.15)", borderBottom: "1px solid rgba(37,99,235,0.2)",
-                padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-                <Cpu size={14} color={BLUE} />
-                <span style={{ color: BLUE, fontWeight: 700, fontSize: 12 }}>Patient-Facing UI</span>
-              </div>
-              <div style={{ padding: "14px 16px", fontFamily: "monospace", fontSize: 11, lineHeight: 2 }}>
-                {[
-                  { c: "rgba(255,255,255,0.3)", t: "// Kiosk (landscape touch display)" },
-                  { c: "white",  t: "  QRCodeDisplay  → session:link(admissionId)" },
-                  { c: "white",  t: "  StepBreadcrumb → [Scan | Pay | Wristband | Navigate]" },
-                  { c: MINT,     t: "  WayfindingMap  → route(elevatorB → floor3 → room304)" },
-                  { c: "rgba(255,255,255,0.3)", t: "" },
-                  { c: "rgba(255,255,255,0.3)", t: "// Mobile Web App (patient's phone)" },
-                  { c: "white",  t: "  DocumentUpload → OCR.validate(pdfs[])" },
-                  { c: "white",  t: "  InsuranceCard  → coverage: '90%' | copay: €120" },
-                  { c: MINT,     t: "  ApplePay       → pay(€120).then(printWristband)" },
-                  { c: "white",  t: "  CheckInComplete → room: 304 | time: 09:30AM" },
-                ].map(({ c, t }, i) => (
-                  <div key={i} style={{ color: c }}>{t || " "}</div>
-                ))}
-              </div>
-            </div>
-            {/* AI pipeline */}
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: 10, overflow: "hidden" }}>
-              <div style={{ background: `${MINT}15`, borderBottom: `1px solid ${MINT}25`,
-                padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-                <Brain size={14} color={MINT} />
-                <span style={{ color: MINT, fontWeight: 700, fontSize: 12 }}>AI Agent Execution Stream</span>
-              </div>
-              <div style={{ padding: "14px 16px", fontFamily: "monospace", fontSize: 11, lineHeight: 2 }}>
-                {[
-                  { c: "rgba(255,255,255,0.3)", t: "// Admission #45367890 · Processing" },
-                  { c: AMBER,  t: "  [1] ClinicalReadinessAgent.run()" },
-                  { c: "white",  t: "       → scanPDF(Anesthesia_Report.pdf)" },
-                  { c: MINT,     t: "       ✓ OCR confidence: 98.4% · VALIDATED" },
-                  { c: "rgba(255,255,255,0.3)", t: "" },
-                  { c: AMBER,  t: "  [2] InsuranceAgent.run()" },
-                  { c: "white",  t: "       → verifyPolicy('HealthCare Plus')" },
-                  { c: MINT,     t: "       ✓ 90% covered · copay: €120.00 · SETTLED" },
-                  { c: "rgba(255,255,255,0.3)", t: "" },
-                  { c: AMBER,  t: "  [3] CheckInAgent.run()" },
-                  { c: "white",  t: "       → authorizeAdmission() + triggerPrint()" },
-                  { c: MINT,     t: "       ✓ Wristband dispatched · Room 304 unlocked" },
-                ].map(({ c, t }, i) => (
-                  <div key={i} style={{ color: c }}>{t || " "}</div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── RESULTS ── */}
       <section style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0d2458 100%)` }}
