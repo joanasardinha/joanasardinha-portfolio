@@ -1,4 +1,5 @@
 import { ArrowUp, Link2, Rss, Globe } from "lucide-react";
+import faviconImg from "../imports/favicon.png";
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -27,9 +28,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 bg-crimson flex items-center justify-center">
-                <span className="text-offwhite font-serif font-black text-sm">S</span>
-              </div>
+              <img src={faviconImg} alt="Sardinha Design Logo" className="w-8 h-8" />
               <div>
                 <span className="font-serif font-black text-offwhite text-lg tracking-widest uppercase block">
                   SARDINHA
