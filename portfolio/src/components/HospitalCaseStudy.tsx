@@ -12,6 +12,7 @@ import screen1Img from "../imports/Hospital_Patient_Intake_Interface-1.png";
 import screen2Img from "../imports/Hospital_Patient_Intake_Interface-2.png";
 import screen3Img from "../imports/Hospital_Patient_Intake_Interface-3.png";
 import screen4Img from "../imports/Hospital_Patient_Intake_Interface-4.png";
+import kioskStep1Img from "../imports/hospital-kiosk-step1.png";
 
 const NAVY  = "#030C23";
 const NAVY2 = "#0A1931";
@@ -372,15 +373,8 @@ function KioskQR() {
             Open your hospital mobile app and scan the QR code to begin your surgical admission.
           </p>
         </div>
-        <div style={{ background: "white", padding: 12, borderRadius: 12, border: "2px solid #e2e8f0",
-          boxShadow: "0 4px 16px rgba(0,0,0,0.1)", flexShrink: 0 }}>
-          <QRCode size={96} />
-          <div style={{ textAlign: "center", marginTop: 6 }}>
-            <div style={{ width: 24, height: 24, background: BLUE, borderRadius: "50%",
-              display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }}>
-              <span style={{ color: "white", fontSize: 12 }}>📱</span>
-            </div>
-          </div>
+        <div style={{ flexShrink: 0 }}>
+          <img src={kioskStep1Img} alt="Hospital Kiosk UI Step 1" style={{ maxWidth: 200, width: "100%", height: "auto", borderRadius: 12 }} />
         </div>
       </div>
     </div>

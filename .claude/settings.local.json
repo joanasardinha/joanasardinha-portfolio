@@ -10,7 +10,8 @@
       "Bash(git push *)",
       "Bash(cp \"/Users/joana.sardinha/Desktop/Joana/Joana Website/spring/SWS_SpringWebsite_Th.HomeFeaturesCarousel2.svg\" \"/Users/joana.sardinha/Library/Application Support/Claude/scratch-workspaces/8c62c1a5-d9a3-4e1d-9813-e4b1bded25f0/fbcac3fb-33ac-4aad-898f-c79c9add06e6/scratch-2026-09-07-08b19a/portfolio/src/imports/spring-mockup.svg\" && ls -lh \"/Users/joana.sardinha/Library/Application Support/Claude/scratch-workspaces/8c62c1a5-d9a3-4e1d-9813-e4b1bded25f0/fbcac3fb-33ac-4aad-898f-c79c9add06e6/scratch-2026-09-07-08b19a/portfolio/src/imports/spring-mockup.svg\")",
       "Bash(cp \"/Users/joana.sardinha/Desktop/Joana/Joana Website/spring/Emerald Mid-fi Wireframes/Top Menu 360px [Phone]-3.png\" \"/Users/joana.sardinha/Library/Application Support/Claude/scratch-workspaces/8c62c1a5-d9a3-4e1d-9813-e4b1bded25f0/fbcac3fb-33ac-4aad-898f-c79c9add06e6/scratch-2026-09-07-08b19a/portfolio/src/imports/spring-midfi-screen.png\" && ls -lh \"/Users/joana.sardinha/Library/Application Support/Claude/scratch-workspaces/8c62c1a5-d9a3-4e1d-9813-e4b1bded25f0/fbcac3fb-33ac-4aad-898f-c79c9add06e6/scratch-2026-09-07-08b19a/portfolio/src/imports/spring-midfi-screen.png\")",
-      "Bash(find /Users/joana.sardinha/Desktop -name \"*Gemini*\" -o -name \"*4a3qqj*\" 2>/dev/null)"
+      "Bash(find /Users/joana.sardinha/Desktop -name \"*Gemini*\" -o -name \"*4a3qqj*\" 2>/dev/null)",
+      "Bash(ls -lh ~/Downloads/*.png 2>/dev/null | tail -5)"
     ]
   }
 }
