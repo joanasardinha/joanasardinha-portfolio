@@ -6,7 +6,7 @@ import {
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
 import springLogo from "../imports/spring-logo.svg";
-import springMockup from "../imports/spring-mockup.svg";
+import springMascot from "../imports/spring-mascot.png";
 
 const CREAM = "#FAF7F2";
 const PEACH = "#F2C5A0";
@@ -653,9 +653,9 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
               </div>
             </div>
 
-            {/* Hero mockup */}
+            {/* Hero mascot */}
             <div className="hidden lg:flex flex-col items-center gap-3 flex-shrink-0">
-              <img src={springMockup} alt="Spring Savings Mobile App Mockup" style={{ maxWidth: 400, width: "100%", height: "auto" }} />
+              <img src={springMascot} alt="Spring Savings Mascot - Spaniel Dog" style={{ maxWidth: 350, width: "100%", height: "auto" }} />
             </div>
           </div>
         </div>
