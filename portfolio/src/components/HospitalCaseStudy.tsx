@@ -6,7 +6,7 @@ import {
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
 import kioskImg from "../imports/Gemini_Generated_Image_yi0wnsyi0wnsyi0w_1.png";
-import room304Img from "../imports/Hospital Self-Service Kiosk UI-4.png";
+import room304Img from "../imports/hospital-kiosk-ui-step2.png";
 import nursingImg from "../imports/Gemini_Generated_Image_94rj7h94rj7h94rj_1.png";
 import screen1Img from "../imports/Hospital_Patient_Intake_Interface-1.png";
 import screen2Img from "../imports/Hospital_Patient_Intake_Interface-2.png";
