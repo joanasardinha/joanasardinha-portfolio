@@ -7,6 +7,7 @@ import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
 import springLogo from "../imports/spring-logo.svg";
 import springMascot from "../imports/spring-mascot.png";
+import springMockup from "../imports/spring-mockup.svg";
 
 const CREAM = "#FAF7F2";
 const PEACH = "#F2C5A0";
@@ -1032,11 +1033,15 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
           <div
             className="flex flex-col lg:flex-row items-center gap-12"
           >
-            {/* Phone */}
+            {/* Phone / Mockup */}
             <div className="flex-shrink-0">
-              <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
-                {phaseScreen[phase]}
-              </Phone>
+              {phase === 4 ? (
+                <img src={springMockup} alt="Spring Savings Hi-Fi Mockup" style={{ maxWidth: 400, width: "100%", height: "auto" }} />
+              ) : (
+                <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
+                  {phaseScreen[phase]}
+                </Phone>
+              )}
             </div>
 
             {/* Phase description */}
