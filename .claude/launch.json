@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Portfolio Dev",
-      "runtimeExecutable": "pnpm",
+      "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "cwd": "portfolio",
       "port": 5173

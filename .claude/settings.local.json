@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find /private/tmp/claude-501/src -type f -name \"*.tsx\" -o -name \"*.ts\" | head -20)"
+      "Bash(find /private/tmp/claude-501/src -type f -name \"*.tsx\" -o -name \"*.ts\" | head -20)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

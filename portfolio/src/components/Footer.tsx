@@ -1,12 +1,30 @@
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Link2, Rss, Globe } from "lucide-react";
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+  const socials = [
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/joanasardinhadesign/",
+      icon: Link2,
+    },
+    {
+      label: "Medium",
+      href: "https://medium.com/@joanasardinha",
+      icon: Rss,
+    },
+    {
+      label: "Dribbble",
+      href: "https://dribbble.com/joanasardinha",
+      icon: Globe,
+    },
+  ];
+
   return (
     <footer role="contentinfo" className="bg-burgundy border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 bg-crimson flex items-center justify-center">
@@ -26,22 +44,18 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-offwhite text-xs tracking-widest uppercase font-semibold mb-5">Navigate</p>
-            <nav aria-label="Footer navigation">
+            <p className="text-offwhite text-xs tracking-widest uppercase font-semibold mb-5">Connect</p>
+            <nav aria-label="Social media links">
               <ul className="space-y-3">
-                {[
-                  { href: "#work", label: "Portfolio" },
-                  { href: "#experience", label: "Experience" },
-                  { href: "#articles", label: "Articles" },
-                  { href: "#services", label: "Mentoring" },
-                  { href: "#services", label: "Consulting" },
-                  { href: "#contact", label: "Contact" },
-                ].map(({ href, label }) => (
+                {socials.map(({ label, href, icon: Icon }) => (
                   <li key={label}>
                     <a
                       href={href}
-                      className="text-offwhite/50 text-sm hover:text-offwhite transition-colors focus-visible:outline-crimson"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-offwhite/50 hover:text-offwhite transition-colors focus-visible:outline-crimson group"
                     >
+                      <Icon size={16} className="group-hover:text-crimson transition-colors" />
                       {label}
                     </a>
                   </li>
