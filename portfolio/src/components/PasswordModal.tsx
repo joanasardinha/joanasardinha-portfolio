@@ -32,7 +32,7 @@ export default function PasswordModal({ onSubmit, onClose }: PasswordModalProps)
         <button
           onClick={onClose}
           aria-label="Close password modal"
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          className="absolute top-4 right-4 text-offwhite/40 hover:text-offwhite/60 transition-colors"
         >
           <X size={20} />
         </button>
