@@ -4,7 +4,10 @@
       "Bash(find /private/tmp/claude-501/src -type f -name \"*.tsx\" -o -name \"*.ts\" | head -20)",
       "Bash(git commit -m ' *)",
       "Bash(curl -s https://joanasardinha.com)",
-      "Bash(curl -s -I https://joanasardinha.com)"
+      "Bash(curl -s -I https://joanasardinha.com)",
+      "Bash(curl -s -X POST -F \"name=Test\" -F \"email=test@example.com\" -F \"level=junior\" -F \"goal=Portfolio review\" -F \"type=Mentoring\" https://formsubmit.co/joanasardinha15@gmail.com)",
+      "Bash(git add *)",
+      "Bash(git push *)"
     ]
   }
 }

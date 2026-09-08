@@ -69,17 +69,24 @@ export default function Services() {
       return;
     }
     try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("level", level);
-      formData.append("goal", goal);
-      formData.append("type", "Mentoring");
-      await fetch("https://formsubmit.co/joanasardinha15@gmail.com", {
+      // Send email via backend API
+      const response = await fetch("/api/send-email", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: "joanasardinha15@gmail.com",
+          type: "Mentoring",
+          name,
+          email,
+          level,
+          goal
+        }),
       });
-      setMentoring((s) => ({ ...s, submitted: true, error: "" }));
+      if (response.ok) {
+        setMentoring((s) => ({ ...s, submitted: true, error: "" }));
+      } else {
+        setMentoring((s) => ({ ...s, error: "Failed to send. Please try again." }));
+      }
     } catch (err) {
       setMentoring((s) => ({ ...s, error: "Failed to send. Please try again." }));
     }
@@ -93,17 +100,25 @@ export default function Services() {
       return;
     }
     try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("company", company);
-      formData.append("budget", budget);
-      formData.append("overview", overview);
-      formData.append("type", "Consulting");
-      await fetch("https://formsubmit.co/joanasardinha15@gmail.com", {
+      // Send email via backend API
+      const response = await fetch("/api/send-email", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: "joanasardinha15@gmail.com",
+          type: "Consulting",
+          name,
+          email: "", // Will be filled from form
+          company,
+          budget,
+          overview
+        }),
       });
-      setConsulting((s) => ({ ...s, submitted: true, error: "" }));
+      if (response.ok) {
+        setConsulting((s) => ({ ...s, submitted: true, error: "" }));
+      } else {
+        setConsulting((s) => ({ ...s, error: "Failed to send. Please try again." }));
+      }
     } catch (err) {
       setConsulting((s) => ({ ...s, error: "Failed to send. Please try again." }));
     }
