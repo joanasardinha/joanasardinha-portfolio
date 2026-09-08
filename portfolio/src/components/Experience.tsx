@@ -132,9 +132,82 @@ export default function Experience() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        {/* Mobile Carousel */}
+        <div className="lg:hidden mb-10">
+          <div className="overflow-hidden border border-white/15 mb-4">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${active * 100}%)` }}
+            >
+              {timeline.map((item) => (
+                <div key={item.id} className="min-w-full p-6 flex flex-col">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <span className="text-offwhite/40 text-xs font-mono tracking-wider">{item.period}</span>
+                    {item.current && (
+                      <span className="relative px-2 py-0.5 bg-crimson/20 text-crimson text-xs font-semibold tracking-widest uppercase">
+                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson animate-ping" aria-hidden="true" />
+                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson" aria-hidden="true" />
+                        <span className="ml-2">Current</span>
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-serif text-offwhite font-bold text-2xl mb-1">{item.role}</h3>
+                  <p className="text-crimson text-sm font-semibold tracking-wide mb-4">
+                    {item.company}
+                    <span className="text-offwhite/40 font-normal ml-2">· {item.location}</span>
+                  </p>
+                  <p className="text-offwhite/60 text-sm leading-relaxed mb-5">{item.description}</p>
+                  <ul className="space-y-2.5" aria-label="Key achievements">
+                    {item.achievements.map((a) => (
+                      <li key={a} className="flex items-start gap-2.5 text-xs text-offwhite/55">
+                        <span className="w-1 h-1 rounded-full bg-crimson mt-1.5 flex-shrink-0" aria-hidden="true" />
+                        {a}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile carousel controls */}
+          <div className="flex items-center justify-center gap-4">
+            <button
+              onClick={prev}
+              disabled={active === 0}
+              aria-label="Previous role"
+              className="w-8 h-8 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson disabled:opacity-25 transition-colors"
+            >
+              <ChevronLeft size={14} />
+            </button>
+
+            <div className="flex gap-2">
+              {timeline.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  aria-label={`Go to ${timeline[i].company}`}
+                  className={`h-1 transition-all duration-300 ${
+                    active === i ? "w-8 bg-crimson" : "w-4 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={next}
+              disabled={active === timeline.length - 1}
+              aria-label="Next role"
+              className="w-8 h-8 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson disabled:opacity-25 transition-colors"
+            >
+              <ChevronRight size={14} />
+            </button>
+          </div>
+        </div>
+
+        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <div className="flex flex-col">
-            {/* Carousel track */}
+            {/* Desktop Carousel */}
             <div className="overflow-hidden flex-1">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
@@ -171,7 +244,7 @@ export default function Experience() {
               </div>
             </div>
 
-            {/* Carousel controls */}
+            {/* Desktop carousel controls */}
             <div className="flex items-center gap-5 mt-8 pt-6 border-t border-white/10">
               <button
                 onClick={prev}
