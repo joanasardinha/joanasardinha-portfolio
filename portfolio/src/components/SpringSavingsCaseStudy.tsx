@@ -6,6 +6,7 @@ import {
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
 import springLogo from "../imports/spring-logo.svg";
+import springMockup from "../imports/spring-mockup.svg";
 
 const CREAM = "#FAF7F2";
 const PEACH = "#F2C5A0";
@@ -652,14 +653,9 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
               </div>
             </div>
 
-            {/* Hero phone */}
+            {/* Hero mockup */}
             <div className="hidden lg:flex flex-col items-center gap-3 flex-shrink-0">
-              <Phone bg={CREAM} border={`${CORAL}50`}>
-                <HiFiScreen />
-              </Phone>
-              <span style={{ color: `${NAVY}50`, fontSize: 10 }}>
-                Final product · Hi-Fi
-              </span>
+              <img src={springMockup} alt="Spring Savings Mobile App Mockup" style={{ maxWidth: 400, width: "100%", height: "auto" }} />
             </div>
           </div>
         </div>
