@@ -631,30 +631,6 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
                 ))}
               </div>
 
-              {/* Key metrics */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                {[
-                  { val: "£660B+", lbl: "in low-interest UK accounts" },
-                  { val: "29M", lbl: "adults affected (55%)" },
-                  { val: "4.6–4.8★", lbl: "Trustpilot rating" },
-                ].map(({ val, lbl }) => (
-                  <div
-                    key={val}
-                    style={{
-                      background: CORAL,
-                      borderRadius: 8,
-                      padding: "10px 16px",
-                    }}
-                  >
-                    <div style={{ color: "white", fontSize: 18, fontWeight: 900, lineHeight: 1 }}>
-                      {val}
-                    </div>
-                    <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 11, marginTop: 2 }}>
-                      {lbl}
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Hero mascot */}
