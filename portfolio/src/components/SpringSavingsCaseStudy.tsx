@@ -8,6 +8,7 @@ import PasswordModal from "./PasswordModal";
 import springLogo from "../imports/spring-logo.svg";
 import springMascot from "../imports/spring-mascot.png";
 import springMockup from "../imports/spring-mockup.svg";
+import springMidFiScreen from "../imports/spring-midfi-screen.png";
 
 const CREAM = "#FAF7F2";
 const PEACH = "#F2C5A0";
@@ -1037,6 +1038,8 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
             <div className="flex-shrink-0">
               {phase === 4 ? (
                 <img src={springMockup} alt="Spring Savings Hi-Fi Mockup" style={{ maxWidth: 400, width: "100%", height: "auto" }} />
+              ) : phase === 3 ? (
+                <img src={springMidFiScreen} alt="Spring Savings Mid-Fi Screen" style={{ maxWidth: 200, width: "100%", height: "auto" }} />
               ) : (
                 <Phone bg={phaseBg[phase]} border={phaseBorder[phase]}>
                   {phaseScreen[phase]}
