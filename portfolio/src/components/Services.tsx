@@ -560,7 +560,6 @@ export default function Services() {
                     </div>
                   </div>
                   <div>
-                  <div>
                     <label htmlFor="c-overview" className={labelClass}>Project Overview / Timeline *</label>
                     <textarea
                       id="c-overview"
