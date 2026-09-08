@@ -69,10 +69,15 @@ export default function Services() {
       return;
     }
     try {
-      await fetch("https://formspree.io/f/xzzyxxwp", {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("level", level);
+      formData.append("goal", goal);
+      formData.append("type", "Mentoring");
+      await fetch("https://formsubmit.co/joanasardinha15@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, level, goal, type: "Mentoring" }),
+        body: formData,
       });
       setMentoring((s) => ({ ...s, submitted: true, error: "" }));
     } catch (err) {
@@ -88,10 +93,15 @@ export default function Services() {
       return;
     }
     try {
-      await fetch("https://formspree.io/f/xzzyxxwp", {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("company", company);
+      formData.append("budget", budget);
+      formData.append("overview", overview);
+      formData.append("type", "Consulting");
+      await fetch("https://formsubmit.co/joanasardinha15@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, budget, overview, type: "Consulting" }),
+        body: formData,
       });
       setConsulting((s) => ({ ...s, submitted: true, error: "" }));
     } catch (err) {
