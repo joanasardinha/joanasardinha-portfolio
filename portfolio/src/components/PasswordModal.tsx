@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Lock, AlertCircle } from "lucide-react";
+import { Lock, AlertCircle, X } from "lucide-react";
 
 interface PasswordModalProps {
   onSubmit: (password: string) => boolean;
+  onClose?: () => void;
 }
 
-export default function PasswordModal({ onSubmit }: PasswordModalProps) {
+export default function PasswordModal({ onSubmit, onClose }: PasswordModalProps) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -26,8 +27,16 @@ export default function PasswordModal({ onSubmit }: PasswordModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-sm w-full p-8 shadow-lg">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={onClose}>
+      <div className="bg-white rounded-lg max-w-sm w-full p-8 shadow-lg relative" onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={onClose}
+          aria-label="Close password modal"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+        >
+          <X size={20} />
+        </button>
+
         <div className="flex justify-center mb-6">
           <div className="w-12 h-12 bg-crimson rounded-full flex items-center justify-center">
             <Lock size={24} className="text-white" />

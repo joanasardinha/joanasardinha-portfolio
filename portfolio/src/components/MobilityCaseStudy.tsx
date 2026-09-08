@@ -465,7 +465,7 @@ export default function MobilityCaseStudy({ onClose }: { onClose: () => void }) 
   };
 
   if (isProtected) {
-    return <PasswordModal onSubmit={verifyPassword} />;
+    return <PasswordModal onSubmit={verifyPassword} onClose={onClose} />;
   }
 
   return (

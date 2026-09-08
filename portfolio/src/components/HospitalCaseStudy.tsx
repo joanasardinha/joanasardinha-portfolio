@@ -668,7 +668,7 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
   const copy = stepCopy[step];
 
   if (isProtected) {
-    return <PasswordModal onSubmit={verifyPassword} />;
+    return <PasswordModal onSubmit={verifyPassword} onClose={onClose} />;
   }
 
   return (

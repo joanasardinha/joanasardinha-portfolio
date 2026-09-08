@@ -502,7 +502,7 @@ export default function AgenticDSCaseStudy({ onClose }: { onClose: () => void })
   ];
 
   if (isProtected) {
-    return <PasswordModal onSubmit={verifyPassword} />;
+    return <PasswordModal onSubmit={verifyPassword} onClose={onClose} />;
   }
 
   return (

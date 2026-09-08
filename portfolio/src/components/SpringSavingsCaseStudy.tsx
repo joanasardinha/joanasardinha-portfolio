@@ -473,7 +473,7 @@ export default function SpringSavingsCaseStudy({ onClose }: { onClose: () => voi
   };
 
   if (isProtected) {
-    return <PasswordModal onSubmit={verifyPassword} />;
+    return <PasswordModal onSubmit={verifyPassword} onClose={onClose} />;
   }
 
   return (
