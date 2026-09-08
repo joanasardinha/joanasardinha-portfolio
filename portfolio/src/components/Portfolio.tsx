@@ -97,7 +97,7 @@ const projects: Project[] = [
   },
   {
     id: "aria",
-    title: "Pluxee Benefits Platform",
+    title: "Workers Benefits Platform",
     subtitle: "End-to-end employee engagement ecosystem — Mobile App, HR Portal & Sales Backoffice, built through onsite co-creation workshops",
     category: "UX/UI",
     tags: ["Employee Engagement", "OutSystems"],
@@ -106,17 +106,6 @@ const projects: Project[] = [
     gradient: "linear-gradient(135deg, #120F38 0%, #191645 60%, #00E67618 100%)",
     accentColor: "#00E676",
     year: "2024",
-  },
-  {
-    id: "nexus",
-    title: "Nexus — AI Decision Engine",
-    subtitle: "Human-in-the-loop interface for complex AI-driven workflows",
-    category: "Agentic UX",
-    tags: ["Agentic UX", "Human-AI Collab", "Workflow Design"],
-    locked: false,
-    gradient: "linear-gradient(135deg, #1a0a00 0%, #7c2d12 50%, #f97316 100%)",
-    accentColor: "#f97316",
-    year: "2025",
   },
   {
     id: "pele",
@@ -281,7 +270,7 @@ export default function Portfolio({ onOpenPhotography }: { onOpenPhotography?: (
           {displayed.map((project) => (
             <article
               key={project.id}
-              className={`group overflow-hidden card-hover cursor-pointer ${project.isGallery ? "border border-white/8" : "bg-white border border-black/8"}`}
+              className={`group overflow-hidden card-hover cursor-pointer ${project.isGallery ? "border border-white/8 sm:col-span-2 xl:col-span-3" : "bg-white border border-black/8"}`}
               style={project.isGallery ? { background: "#0B0B0C" } : undefined}
               onClick={() => {
                 if (project.isGallery) { onOpenPhotography?.(); return; }
