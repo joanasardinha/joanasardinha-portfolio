@@ -57,7 +57,7 @@ export default function Services() {
   const updateConsulting = (field: keyof ConsultingForm, value: string) =>
     setConsulting((s) => ({ ...s, data: { ...s.data, [field]: value }, error: "" }));
 
-  const submitMentoring = async (e: React.FormEvent) => {
+  const submitMentoring = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { name, email, level, goal } = mentoring.data;
     if (!name || !email || !level || !goal) {
@@ -68,21 +68,22 @@ export default function Services() {
       setMentoring((s) => ({ ...s, error: "Please enter a valid email address." }));
       return;
     }
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("level", level);
+    formData.append("goal", goal);
+    formData.append("_captcha", "false");
+    formData.append("_next", window.location.href);
+
     try {
-      // Send email via backend API
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("https://formspree.io/f/xzzyxxwp", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: "joanasardinha15@gmail.com",
-          type: "Mentoring",
-          name,
-          email,
-          level,
-          goal
-        }),
+        body: formData,
       });
-      if (response.ok) {
+
+      if (response.ok || response.status === 200) {
         setMentoring((s) => ({ ...s, submitted: true, error: "" }));
       } else {
         setMentoring((s) => ({ ...s, error: "Failed to send. Please try again." }));
@@ -92,29 +93,29 @@ export default function Services() {
     }
   };
 
-  const submitConsulting = async (e: React.FormEvent) => {
+  const submitConsulting = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { name, company, budget, overview } = consulting.data;
     if (!name || !budget || !overview) {
       setConsulting((s) => ({ ...s, error: "Please fill in all required fields." }));
       return;
     }
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("company", company || "Not provided");
+    formData.append("budget", budget);
+    formData.append("overview", overview);
+    formData.append("_captcha", "false");
+    formData.append("_next", window.location.href);
+
     try {
-      // Send email via backend API
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("https://formspree.io/f/xzzyxxwp", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: "joanasardinha15@gmail.com",
-          type: "Consulting",
-          name,
-          email: "", // Will be filled from form
-          company,
-          budget,
-          overview
-        }),
+        body: formData,
       });
-      if (response.ok) {
+
+      if (response.ok || response.status === 200) {
         setConsulting((s) => ({ ...s, submitted: true, error: "" }));
       } else {
         setConsulting((s) => ({ ...s, error: "Failed to send. Please try again." }));
