@@ -776,7 +776,7 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             <div style={{ textAlign: "center" }}>
               <img src={kioskImg} alt="Step 1: Kiosk QR Scan"
-                style={{ width: "100%", maxWidth: "300px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
+                style={{ width: "100%", maxWidth: "210px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
               <h3 style={{ color: NAVY, fontSize: 16, fontWeight: 800, marginBottom: 8 }}>
                 Step 1: Arrival & Sync
               </h3>
