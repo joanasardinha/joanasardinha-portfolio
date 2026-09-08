@@ -787,7 +787,7 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
 
             <div style={{ textAlign: "center" }}>
               <img src={room304Img} alt="Step 2-3: Payment & Wristband"
-                style={{ width: "100%", maxWidth: "300px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
+                style={{ width: "100%", maxWidth: "350px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
               <h3 style={{ color: NAVY, fontSize: 16, fontWeight: 800, marginBottom: 8 }}>
                 Step 2-3: AI Intake & Print
               </h3>
@@ -798,7 +798,7 @@ export default function HospitalCaseStudy({ onClose }: { onClose: () => void }) 
 
             <div style={{ textAlign: "center" }}>
               <img src={nursingImg} alt="Step 4: Room Entry & Notification"
-                style={{ width: "100%", maxWidth: "300px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
+                style={{ width: "100%", maxWidth: "350px", height: "auto", borderRadius: 12, marginBottom: 16 }} />
               <h3 style={{ color: NAVY, fontSize: 16, fontWeight: 800, marginBottom: 8 }}>
                 Step 4: Smart Entry
               </h3>
