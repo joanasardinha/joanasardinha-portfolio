@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
+import springLogo from "../imports/spring-logo.svg";
 
 const CREAM = "#FAF7F2";
 const PEACH = "#F2C5A0";
@@ -244,8 +245,7 @@ function HiFiScreen() {
       {/* header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "6px 0 4px" }}>
-        <span style={{ fontFamily: "Georgia, serif", color: NAVY, fontSize: 11, fontWeight: 700,
-          fontStyle: "italic" }}>spring</span>
+        <img src={springLogo} alt="Spring Savings Logo" style={{ height: 20, width: "auto" }} />
         <div style={{ width: 20, height: 20, borderRadius: "50%", background: PEACH,
           display: "flex", alignItems: "center", justifyContent: "center" }}>
           <span style={{ fontSize: 10 }}>🐾</span>
