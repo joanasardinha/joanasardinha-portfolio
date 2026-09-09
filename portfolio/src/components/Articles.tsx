@@ -2,9 +2,9 @@ import { useRef, useState, useEffect } from "react";
 import { ExternalLink, Clock, ChevronLeft, ChevronRight, Tag } from "lucide-react";
 import gromitGif from "../imports/1_Dk0CBg_V2hP_iDQW2y9d_w.gif";
 import aiNativeImg from "../imports/sing_black_and_white_GIF_by_Boomerang_Official.gif";
-import japanImg from "../imports/1_5Uocur4S90BLP6Grmw3l7g.jpeg";
-import imposterImg from "../imports/0_8HHr3Sp0vW5FOLng.jpeg";
-import outsystemsImg from "../imports/1_eDrpw2dlWrSa1USris525w.Jpeg";
+import japanImg from "../imports/image-1.jpg";
+import imposterImg from "../imports/image-3.jpg";
+import outsystemsImg from "../imports/spring-mascot.jpg";
 
 interface Article {
   id: string;
