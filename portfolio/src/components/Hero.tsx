@@ -16,7 +16,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         className="absolute inset-0 opacity-20"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 80% 60% at 70% 40%, #C81D25 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 60% at 70% 40%, #FF4049 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -49,7 +49,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               translate="no"
               spellCheck={false}
             >
-              {"Hi! I'm "}<span className="italic text-crimson">{"JOANA"}</span>
+              {"Hi! I'm "}<span className="italic text-crimson-on-burgundy">{"JOANA"}</span>
             </h1>
 
             <p

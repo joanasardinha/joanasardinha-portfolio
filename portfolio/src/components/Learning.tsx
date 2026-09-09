@@ -39,7 +39,7 @@ export default function Learning() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-8 h-px bg-crimson" aria-hidden="true" />
-          <span className="text-crimson text-xs tracking-[0.4em] uppercase font-semibold">Learning</span>
+          <span className="text-crimson-on-dark text-xs tracking-[0.4em] uppercase font-semibold">Learning</span>
         </div>
         <h2
           className="font-serif text-offwhite leading-none mb-16"
@@ -52,13 +52,13 @@ export default function Learning() {
           {/* Online Courses */}
           <div>
             <h3 className="font-serif text-offwhite font-bold text-2xl mb-8 flex items-center gap-3">
-              <BookOpen size={18} className="text-crimson" />
+              <BookOpen size={18} className="text-crimson-on-dark" />
               Online Learning
             </h3>
             <div className="space-y-4">
               {courses.map(({ title, detail, badge }) => (
                 <div key={title + detail} className="flex gap-3 items-start">
-                  <span className="mt-0.5 flex-shrink-0 px-1.5 py-0.5 bg-crimson/20 text-crimson text-[10px] font-bold tracking-wider uppercase leading-none">
+                  <span className="mt-0.5 flex-shrink-0 px-1.5 py-0.5 bg-crimson/20 text-crimson-on-dark text-[10px] font-bold tracking-wider uppercase leading-none">
                     {badge}
                   </span>
                   <div>
@@ -73,19 +73,19 @@ export default function Learning() {
           {/* Education */}
           <div>
             <h3 className="font-serif text-offwhite font-bold text-2xl mb-8 flex items-center gap-3">
-              <GraduationCap size={18} className="text-crimson" />
+              <GraduationCap size={18} className="text-crimson-on-dark" />
               Education
             </h3>
             <div className="space-y-6">
               <div className="border border-white/10 p-6">
-                <p className="text-crimson text-xs tracking-widest uppercase font-semibold mb-2">Bachelor's Degree</p>
+                <p className="text-crimson-on-dark text-xs tracking-widest uppercase font-semibold mb-2">Bachelor's Degree</p>
                 <p className="text-offwhite font-semibold text-sm">Bachelor's Degree in Design</p>
                 <p className="text-offwhite/50 text-xs mt-1">
                   Deca.UA — Departamento de Comunicação e Arte da Universidade de Aveiro, Aveiro · 2013–2016
                 </p>
               </div>
               <div className="border border-white/10 p-6">
-                <p className="text-crimson text-xs tracking-widest uppercase font-semibold mb-2">Postgraduate Degree</p>
+                <p className="text-crimson-on-dark text-xs tracking-widest uppercase font-semibold mb-2">Postgraduate Degree</p>
                 <p className="text-offwhite font-semibold text-sm">Postgraduate Degree in Advertising and Marketing</p>
                 <p className="text-offwhite/50 text-xs mt-1">
                   Escola Superior de Comunicação Social (ESCS), Lisbon · 2016–2017
