@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Download, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
 
 const timeline = [
@@ -100,6 +100,8 @@ const skills: { label: string; items: string[] }[] = [
 
 export default function Experience() {
   const [active, setActive] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
@@ -117,6 +119,22 @@ export default function Experience() {
     if (diff > threshold) next();
     else if (diff < -threshold) prev();
   };
+
+  const updateActiveIndex = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const scrollLeft = Math.round(el.scrollLeft);
+    const cardWidth = el.querySelector("div[snap-start]")?.offsetWidth ?? el.clientWidth;
+    setActiveIndex(Math.round(scrollLeft / (cardWidth + 24)));
+  };
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateActiveIndex, { passive: true });
+    updateActiveIndex();
+    return () => el.removeEventListener("scroll", updateActiveIndex);
+  }, []);
 
   return (
     <section
@@ -150,6 +168,7 @@ export default function Experience() {
         {/* Mobile Carousel */}
         <div className="lg:hidden mb-10">
           <div
+            ref={trackRef}
             className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             onTouchStart={handleTouchStart}
@@ -182,6 +201,26 @@ export default function Experience() {
                     ))}
                   </ul>
               </div>
+            ))}
+          </div>
+
+          <div className="flex gap-2 mt-6" role="tablist" aria-label="Experience position">
+            {timeline.map((_, i) => (
+              <button
+                key={i}
+                role="tab"
+                aria-selected={activeIndex === i}
+                aria-label={`Go to ${timeline[i].company}`}
+                onClick={() => {
+                  const el = trackRef.current;
+                  if (!el) return;
+                  const cardWidth = el.querySelector("div[snap-start]")?.offsetWidth ?? el.clientWidth;
+                  el.scrollTo({ left: i * (cardWidth + 24), behavior: "smooth" });
+                }}
+                className={`h-0.5 transition-all duration-300 focus-visible:outline-crimson ${
+                  activeIndex === i ? "w-8 bg-crimson" : "w-4 bg-offwhite/20 hover:bg-offwhite/40"
+                }`}
+              />
             ))}
           </div>
         </div>
