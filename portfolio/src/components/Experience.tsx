@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Download, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
+import cvPdf from "../imports/CV_Joana_Sardinha.pdf";
 
 const timeline = [
   {
@@ -155,8 +156,8 @@ export default function Experience() {
             </h2>
           </div>
           <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); alert("CV download would trigger here."); }}
+            href={cvPdf}
+            download="CV_Joana_Sardinha.pdf"
             className="inline-flex items-center gap-3 px-6 py-3 border border-white/20 text-offwhite/80 text-sm tracking-widest uppercase font-semibold hover:border-offwhite hover:text-offwhite hover:bg-white/5 transition-all duration-200 focus-visible:outline-crimson-on-dark self-start lg:self-auto"
             aria-label="Download CV as PDF"
           >
