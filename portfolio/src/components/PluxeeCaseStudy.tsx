@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { X, Lock, Mail, Eye, EyeOff, ArrowRight, CheckCircle2, AlertCircle, Shield, Users, TrendingUp, Award } from "lucide-react";
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
-import workshopImg from "@/imports/C186DFB0-BF81-4D2A-9A92-A99ED28E77D9_1_102_o.jpeg";
+import workshopImg from "@/imports/photo-51.jpg";
 import awardDetailImg from "@/imports/Award_Detail.jpg";
 import awardsListImg from "@/imports/Awards_full_list.jpg";
 import homepageImg from "@/imports/Homepage.jpg";
