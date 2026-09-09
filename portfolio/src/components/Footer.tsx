@@ -69,9 +69,6 @@ export default function Footer() {
           <p className="text-offwhite/30 text-xs">
             © {new Date().getFullYear()} Sardinha Design. All rights reserved.
           </p>
-          <p className="text-offwhite/20 text-xs">
-            Designed & built with care · Lisbon, Portugal
-          </p>
           <button
             onClick={scrollTop}
             aria-label="Scroll back to top"
