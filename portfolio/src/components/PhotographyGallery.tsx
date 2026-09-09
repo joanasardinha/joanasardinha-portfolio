@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Grid, Film, ChevronLeft, ChevronRight, X, Info, Maximize2, Camera, MapPin } from "lucide-react";
 
+// Import all photos statically for Vite bundling
+const photoModules = import.meta.glob<{ default: string }>('../imports/photo-*.jpg', { eager: true });
+
 type Orientation = "landscape" | "portrait";
 type LayoutMode = "masonry" | "carousel";
 
@@ -79,6 +82,10 @@ const generatePhotos = (): Photo[] => {
     const subtitle = subtitles[i % subtitles.length];
     const isLandscape = Math.random() > 0.4;
 
+    // Get the photo URL from imported modules
+    const photoKey = `../imports/photo-${photoNum}.jpg`;
+    const photoUrl = photoModules[photoKey]?.default || '';
+
     return {
       id: `photo-${photoNum}`,
       title: `${title} #${photoNum}`,
@@ -86,8 +93,8 @@ const generatePhotos = (): Photo[] => {
       category,
       location: `${location.name}, ${location.city}, ${location.country}`,
       year: "2024",
-      url: `/imports/photo-${photoNum}.jpg`,
-      thumbnailUrl: `/imports/photo-${photoNum}.jpg`,
+      url: photoUrl,
+      thumbnailUrl: photoUrl,
       orientation: isLandscape ? "landscape" : "portrait",
       exif: {
         camera: "Sony α7 IV",
