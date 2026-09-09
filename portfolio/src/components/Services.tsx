@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { Users, Building2, CheckCircle2, AlertCircle, Clock, ChevronDown, Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Users, Building2, CheckCircle2, AlertCircle, Clock, ChevronDown, Check } from "lucide-react";
 
 type FormState<T> = { data: T; submitted: boolean; error: string };
 
@@ -35,10 +35,9 @@ const consultingFeatures = [
 
 export default function Services() {
   const [openForm, setOpenForm] = useState<"mentoring" | "consulting" | null>(null);
-  const [activeCard, setActiveCard] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
   const cards: ("mentoring" | "consulting")[] = ["mentoring", "consulting"];
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
 
   const [mentoring, setMentoring] = useState<FormState<MentoringForm>>({
     data: { name: "", email: "", level: "", goal: "", time: "" },
@@ -116,17 +115,21 @@ export default function Services() {
     setOpenForm((prev) => (prev === type ? null : type));
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+  const updateActiveIndex = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const scrollLeft = Math.round(el.scrollLeft);
+    const cardWidth = el.firstElementChild?.clientWidth ?? el.clientWidth;
+    setActiveIndex(Math.round(scrollLeft / cardWidth));
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    touchEndX.current = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX.current;
-    const threshold = 50;
-    if (diff > threshold) setActiveCard(1);
-    else if (diff < -threshold) setActiveCard(0);
-  };
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateActiveIndex, { passive: true });
+    updateActiveIndex();
+    return () => el.removeEventListener("scroll", updateActiveIndex);
+  }, []);
 
   const fieldClass =
     "w-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-offwhite placeholder-offwhite/30 focus:outline-none focus:border-crimson transition-colors";
@@ -152,14 +155,14 @@ export default function Services() {
 
         {/* ── Mobile carousel ── */}
         <div className="lg:hidden mb-4">
-          <div className="overflow-hidden border border-white/15" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-            <div
-              className="flex transition-transform duration-400 ease-in-out"
-              style={{ transform: `translateX(-${activeCard * 100}%)` }}
-            >
+          <div
+            ref={trackRef}
+            className="flex gap-0 overflow-x-auto pb-4 snap-x snap-mandatory"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
               {/* MENTORING CARD — mobile */}
               <div
-                className={`min-w-full p-8 flex flex-col transition-colors duration-300 ${
+                className={`flex-none w-[100vw] p-8 flex flex-col transition-colors duration-300 snap-start ${
                   openForm === "mentoring" ? "bg-white/5" : "bg-transparent"
                 }`}
               >
@@ -209,7 +212,7 @@ export default function Services() {
 
               {/* CONSULTING CARD — mobile */}
               <div
-                className={`min-w-full p-8 flex flex-col transition-colors duration-300 ${
+                className={`flex-none w-[100vw] p-8 flex flex-col transition-colors duration-300 snap-start ${
                   openForm === "consulting" ? "bg-white/5" : "bg-transparent"
                 }`}
               >
@@ -258,39 +261,26 @@ export default function Services() {
                   <ChevronDown size={16} className={`transition-transform duration-300 ${openForm === "consulting" ? "rotate-180" : ""}`} />
                 </button>
               </div>
-            </div>
           </div>
 
-          {/* Carousel controls */}
-          <div className="flex items-center justify-center gap-4 mt-5">
-            <button
-              onClick={() => setActiveCard(0)}
-              disabled={activeCard === 0}
-              aria-label="Previous card"
-              className="w-8 h-8 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson disabled:opacity-25 transition-colors"
-            >
-              <ChevronLeft size={14} />
-            </button>
-            <div className="flex gap-2">
-              {cards.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveCard(i)}
-                  aria-label={`Go to ${cards[i]} card`}
-                  className={`h-1 transition-all duration-300 ${
-                    activeCard === i ? "w-8 bg-crimson" : "w-4 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={() => setActiveCard(1)}
-              disabled={activeCard === 1}
-              aria-label="Next card"
-              className="w-8 h-8 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson disabled:opacity-25 transition-colors"
-            >
-              <ChevronRight size={14} />
-            </button>
+          <div className="flex gap-2 mt-6" role="tablist" aria-label="Services position">
+            {cards.map((_, i) => (
+              <button
+                key={i}
+                role="tab"
+                aria-selected={activeIndex === i}
+                aria-label={`Go to ${cards[i]} card`}
+                onClick={() => {
+                  const el = trackRef.current;
+                  if (!el) return;
+                  const cardWidth = el.firstElementChild?.clientWidth ?? el.clientWidth;
+                  el.scrollTo({ left: i * cardWidth, behavior: "smooth" });
+                }}
+                className={`h-0.5 transition-all duration-300 focus-visible:outline-crimson ${
+                  activeIndex === i ? "w-8 bg-crimson" : "w-4 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            ))}
           </div>
         </div>
 
