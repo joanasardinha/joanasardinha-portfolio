@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Download, Briefcase } from "lucide-react";
+import { Download, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
 
 const timeline = [
   {
