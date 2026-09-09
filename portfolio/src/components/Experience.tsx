@@ -151,11 +151,11 @@ export default function Experience() {
         <div className="lg:hidden mb-10">
           <div className="overflow-hidden border border-white/15 mb-4" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${active * 100}%)` }}
+              className="flex gap-4 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${active * 90}%)` }}
             >
               {timeline.map((item) => (
-                <div key={item.id} className="min-w-full p-6 flex flex-col">
+                <div key={item.id} className="min-w-[calc(100%-1rem)] p-6 flex flex-col">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-offwhite/40 text-xs font-mono tracking-wider">{item.period}</span>
                     {item.current && (
