@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Download, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
+import { Download, Briefcase } from "lucide-react";
 
 const timeline = [
   {
@@ -147,8 +147,8 @@ export default function Experience() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-crimson" aria-hidden="true" />
-              <span className="text-crimson text-xs tracking-[0.4em] uppercase font-semibold">Career</span>
+              <div className="w-8 h-px bg-crimson-on-dark" aria-hidden="true" />
+              <span className="text-crimson-on-dark text-xs tracking-[0.4em] uppercase font-semibold">Career</span>
             </div>
             <h2 className="font-serif text-offwhite leading-none" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}>
               My Story so far
@@ -157,7 +157,7 @@ export default function Experience() {
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); alert("CV download would trigger here."); }}
-            className="inline-flex items-center gap-3 px-6 py-3 border border-white/20 text-offwhite/80 text-sm tracking-widest uppercase font-semibold hover:border-offwhite hover:text-offwhite hover:bg-white/5 transition-all duration-200 focus-visible:outline-crimson self-start lg:self-auto"
+            className="inline-flex items-center gap-3 px-6 py-3 border border-white/20 text-offwhite/80 text-sm tracking-widest uppercase font-semibold hover:border-offwhite hover:text-offwhite hover:bg-white/5 transition-all duration-200 focus-visible:outline-crimson-on-dark self-start lg:self-auto"
             aria-label="Download CV as PDF"
           >
             <Download size={16} />
@@ -179,15 +179,15 @@ export default function Experience() {
                   <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-offwhite/40 text-xs font-mono tracking-wider">{item.period}</span>
                     {item.current && (
-                      <span className="relative px-2 py-0.5 bg-crimson/20 text-crimson text-xs font-semibold tracking-widest uppercase">
-                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson animate-ping" aria-hidden="true" />
-                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson" aria-hidden="true" />
+                      <span className="relative px-2 py-0.5 bg-crimson-on-dark/20 text-crimson-on-dark text-xs font-semibold tracking-widest uppercase">
+                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson-on-dark animate-ping" aria-hidden="true" />
+                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson-on-dark" aria-hidden="true" />
                         <span className="ml-2">Current</span>
                       </span>
                     )}
                   </div>
                   <h3 className="font-serif text-offwhite font-bold text-2xl mb-1">{item.role}</h3>
-                  <p className="text-crimson text-sm font-semibold tracking-wide mb-4">
+                  <p className="text-crimson-on-dark text-sm font-semibold tracking-wide mb-4">
                     {item.company}
                     <span className="text-offwhite/40 font-normal ml-2">· {item.location}</span>
                   </p>
@@ -195,7 +195,7 @@ export default function Experience() {
                   <ul className="space-y-2.5" aria-label="Key achievements">
                     {item.achievements.map((a) => (
                       <li key={a} className="flex items-start gap-2.5 text-xs text-offwhite/55">
-                        <span className="w-1 h-1 rounded-full bg-crimson mt-1.5 flex-shrink-0" aria-hidden="true" />
+                        <span className="w-1 h-1 rounded-full bg-crimson-on-dark mt-1.5 flex-shrink-0" aria-hidden="true" />
                         {a}
                       </li>
                     ))}
@@ -217,8 +217,8 @@ export default function Experience() {
                   const cardWidth = el.querySelector("div[snap-start]")?.offsetWidth ?? el.clientWidth;
                   el.scrollTo({ left: i * (cardWidth + 24), behavior: "smooth" });
                 }}
-                className={`h-0.5 transition-all duration-300 focus-visible:outline-crimson ${
-                  activeIndex === i ? "w-8 bg-crimson" : "w-4 bg-offwhite/20 hover:bg-offwhite/40"
+                className={`h-0.5 transition-all duration-300 focus-visible:outline-crimson-on-dark ${
+                  activeIndex === i ? "w-8 bg-crimson-on-dark" : "w-4 bg-offwhite/20 hover:bg-offwhite/40"
                 }`}
               />
             ))}
@@ -238,15 +238,15 @@ export default function Experience() {
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <span className="text-offwhite/40 text-xs font-mono tracking-wider">{item.period}</span>
                       {item.current && (
-                        <span className="relative px-2 py-0.5 bg-crimson/20 text-crimson text-xs font-semibold tracking-widest uppercase">
-                          <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson animate-ping" aria-hidden="true" />
-                          <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson" aria-hidden="true" />
+                        <span className="relative px-2 py-0.5 bg-crimson-on-dark/20 text-crimson-on-dark text-xs font-semibold tracking-widest uppercase">
+                          <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson-on-dark animate-ping" aria-hidden="true" />
+                          <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-crimson-on-dark" aria-hidden="true" />
                           <span className="ml-2">Current</span>
                         </span>
                       )}
                     </div>
                     <h3 className="font-serif text-offwhite font-bold text-2xl lg:text-3xl mb-1">{item.role}</h3>
-                    <p className="text-crimson text-sm font-semibold tracking-wide mb-4">
+                    <p className="text-crimson-on-dark text-sm font-semibold tracking-wide mb-4">
                       {item.company}
                       <span className="text-offwhite/40 font-normal ml-2">· {item.location}</span>
                     </p>
@@ -254,7 +254,7 @@ export default function Experience() {
                     <ul className="space-y-2.5" aria-label="Key achievements">
                       {item.achievements.map((a) => (
                         <li key={a} className="flex items-start gap-2.5 text-sm text-offwhite/55">
-                          <span className="w-1 h-1 rounded-full bg-crimson mt-2 flex-shrink-0" aria-hidden="true" />
+                          <span className="w-1 h-1 rounded-full bg-crimson-on-dark mt-2 flex-shrink-0" aria-hidden="true" />
                           {a}
                         </li>
                       ))}
@@ -270,7 +270,7 @@ export default function Experience() {
                 onClick={prev}
                 disabled={active === 0}
                 aria-label="Previous role"
-                className="w-9 h-9 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson disabled:opacity-20 disabled:pointer-events-none transition-colors"
+                className="w-9 h-9 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson-on-dark disabled:opacity-20 disabled:pointer-events-none transition-colors"
               >
                 <ChevronLeft size={16} />
               </button>
@@ -282,7 +282,7 @@ export default function Experience() {
                     onClick={() => setActive(i)}
                     aria-label={`Go to ${timeline[i].company}`}
                     className={`h-0.5 transition-all duration-300 ${
-                      active === i ? "flex-[3] bg-crimson" : "flex-1 bg-white/20 hover:bg-white/40"
+                      active === i ? "flex-[3] bg-crimson-on-dark" : "flex-1 bg-white/20 hover:bg-white/40"
                     }`}
                   />
                 ))}
@@ -296,7 +296,7 @@ export default function Experience() {
                 onClick={next}
                 disabled={active === timeline.length - 1}
                 aria-label="Next role"
-                className="w-9 h-9 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson disabled:opacity-20 disabled:pointer-events-none transition-colors"
+                className="w-9 h-9 flex items-center justify-center border border-white/20 text-offwhite/50 hover:border-crimson hover:text-crimson-on-dark disabled:opacity-20 disabled:pointer-events-none transition-colors"
               >
                 <ChevronRight size={16} />
               </button>
@@ -306,13 +306,13 @@ export default function Experience() {
           <div className="space-y-10">
             <div>
               <h3 className="font-serif text-offwhite font-bold text-2xl mb-8 flex items-center gap-3">
-                <Briefcase size={18} className="text-crimson" />
+                <Briefcase size={18} className="text-crimson-on-dark" />
                 Skills
               </h3>
               <div className="space-y-6">
                 {skills.map(({ label, items }) => (
                   <div key={label}>
-                    <p className="text-crimson text-xs tracking-widest uppercase font-semibold mb-2">{label}</p>
+                    <p className="text-crimson-on-dark text-xs tracking-widest uppercase font-semibold mb-2">{label}</p>
                     <div className="flex flex-wrap gap-2">
                       {items.map((skill) => (
                         <span

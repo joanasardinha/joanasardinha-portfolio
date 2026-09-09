@@ -132,7 +132,7 @@ export default function Services() {
   }, []);
 
   const fieldClass =
-    "w-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-offwhite placeholder-offwhite/30 focus:outline-none focus:border-crimson transition-colors";
+    "w-full border border-white/20 bg-white/5 px-4 py-3 text-sm text-offwhite placeholder-offwhite/30 focus:outline-none focus:border-crimson-on-burgundy transition-colors";
   const labelClass = "block text-offwhite/80 text-xs font-semibold tracking-widest uppercase mb-2";
 
   return (
@@ -143,8 +143,8 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-px bg-crimson" aria-hidden="true" />
-          <span className="text-crimson text-xs tracking-[0.4em] uppercase font-semibold">services</span>
+          <div className="w-8 h-px bg-crimson-on-burgundy" aria-hidden="true" />
+          <span className="text-crimson-on-burgundy text-xs tracking-[0.4em] uppercase font-semibold">services</span>
         </div>
         <h2
           className="font-serif text-offwhite leading-none mb-6"
@@ -167,10 +167,10 @@ export default function Services() {
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 bg-crimson/20 flex items-center justify-center">
-                    <Users size={16} className="text-crimson" />
+                  <div className="w-8 h-8 bg-crimson-on-burgundy/20 flex items-center justify-center">
+                    <Users size={16} className="text-crimson-on-burgundy" />
                   </div>
-                  <span className="text-crimson text-xs tracking-[0.3em] uppercase font-semibold">For Designers</span>
+                  <span className="text-crimson-on-burgundy text-xs tracking-[0.3em] uppercase font-semibold">For Designers</span>
                 </div>
                 <h3 className="font-serif text-offwhite font-black text-3xl mb-4">Mentoring</h3>
                 <p className="text-offwhite/65 text-sm leading-relaxed mb-8">
@@ -180,7 +180,7 @@ export default function Services() {
                 <ul className="space-y-3 mb-8 flex-1" aria-label="Mentoring includes">
                   {mentoringFeatures.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm text-offwhite/75">
-                      <Check size={14} className="text-crimson mt-0.5 flex-shrink-0" />
+                      <Check size={14} className="text-crimson-on-burgundy mt-0.5 flex-shrink-0" />
                       {f}
                     </li>
                   ))}
@@ -202,7 +202,7 @@ export default function Services() {
                   aria-expanded={openForm === "mentoring"}
                   aria-controls="mentoring-form"
                   className={`w-full py-4 flex items-center justify-center gap-3 text-sm tracking-widest uppercase font-semibold transition-all duration-200 ${
-                    openForm === "mentoring" ? "bg-crimson text-offwhite" : "bg-offwhite text-burgundy hover:bg-white"
+                    openForm === "mentoring" ? "bg-crimson-on-burgundy text-offwhite" : "bg-offwhite text-burgundy hover:bg-white"
                   }`}
                 >
                   {openForm === "mentoring" ? "Close Form" : "Book a Session"}
@@ -217,10 +217,10 @@ export default function Services() {
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 bg-crimson/20 flex items-center justify-center">
-                    <Building2 size={16} className="text-crimson" />
+                  <div className="w-8 h-8 bg-crimson-on-burgundy/20 flex items-center justify-center">
+                    <Building2 size={16} className="text-crimson-on-burgundy" />
                   </div>
-                  <span className="text-crimson text-xs tracking-[0.3em] uppercase font-semibold">For Companies</span>
+                  <span className="text-crimson-on-burgundy text-xs tracking-[0.3em] uppercase font-semibold">For Companies</span>
                 </div>
                 <h3 className="font-serif text-offwhite font-black text-3xl mb-4">Consulting</h3>
                 <p className="text-offwhite/65 text-sm leading-relaxed mb-8">
@@ -230,7 +230,7 @@ export default function Services() {
                 <ul className="space-y-3 mb-8 flex-1" aria-label="Consulting includes">
                   {consultingFeatures.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm text-offwhite/75">
-                      <Check size={14} className="text-crimson mt-0.5 flex-shrink-0" />
+                      <Check size={14} className="text-crimson-on-burgundy mt-0.5 flex-shrink-0" />
                       {f}
                     </li>
                   ))}
@@ -253,7 +253,7 @@ export default function Services() {
                   aria-controls="consulting-form"
                   className={`w-full py-4 flex items-center justify-center gap-3 text-sm tracking-widest uppercase font-semibold transition-all duration-200 ${
                     openForm === "consulting"
-                      ? "bg-crimson text-offwhite"
+                      ? "bg-crimson-on-burgundy text-offwhite"
                       : "border border-white/30 text-offwhite hover:border-offwhite hover:bg-white/5"
                   }`}
                 >
@@ -276,8 +276,8 @@ export default function Services() {
                   const cardWidth = el.firstElementChild?.clientWidth ?? el.clientWidth;
                   el.scrollTo({ left: i * cardWidth, behavior: "smooth" });
                 }}
-                className={`h-0.5 transition-all duration-300 focus-visible:outline-crimson ${
-                  activeIndex === i ? "w-8 bg-crimson" : "w-4 bg-white/20 hover:bg-white/40"
+                className={`h-0.5 transition-all duration-300 focus-visible:outline-crimson-on-burgundy ${
+                  activeIndex === i ? "w-8 bg-crimson-on-burgundy" : "w-4 bg-white/20 hover:bg-white/40"
                 }`}
               />
             ))}
@@ -293,10 +293,10 @@ export default function Services() {
             }`}
           >
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-8 h-8 bg-crimson/20 flex items-center justify-center">
-                <Users size={16} className="text-crimson" />
+              <div className="w-8 h-8 bg-crimson-on-burgundy/20 flex items-center justify-center">
+                <Users size={16} className="text-crimson-on-burgundy" />
               </div>
-              <span className="text-crimson text-xs tracking-[0.3em] uppercase font-semibold">For Designers</span>
+              <span className="text-crimson-on-burgundy text-xs tracking-[0.3em] uppercase font-semibold">For Designers</span>
             </div>
             <h3 className="font-serif text-offwhite font-black text-4xl mb-4">Mentoring</h3>
             <p className="text-offwhite/65 text-sm leading-relaxed mb-8">
@@ -306,7 +306,7 @@ export default function Services() {
             <ul className="space-y-3 mb-8 flex-1" aria-label="Mentoring includes">
               {mentoringFeatures.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm text-offwhite/75">
-                  <Check size={14} className="text-crimson mt-0.5 flex-shrink-0" />
+                  <Check size={14} className="text-crimson-on-burgundy mt-0.5 flex-shrink-0" />
                   {f}
                 </li>
               ))}
@@ -328,7 +328,7 @@ export default function Services() {
               aria-expanded={openForm === "mentoring"}
               aria-controls="mentoring-form"
               className={`w-full py-4 flex items-center justify-center gap-3 text-sm tracking-widest uppercase font-semibold transition-all duration-200 focus-visible:outline-offwhite ${
-                openForm === "mentoring" ? "bg-crimson text-offwhite" : "bg-offwhite text-burgundy hover:bg-white"
+                openForm === "mentoring" ? "bg-crimson-on-burgundy text-offwhite" : "bg-offwhite text-burgundy hover:bg-white"
               }`}
             >
               {openForm === "mentoring" ? "Close Form" : "Book a Session"}
@@ -343,10 +343,10 @@ export default function Services() {
             }`}
           >
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-8 h-8 bg-crimson/20 flex items-center justify-center">
-                <Building2 size={16} className="text-crimson" />
+              <div className="w-8 h-8 bg-crimson-on-burgundy/20 flex items-center justify-center">
+                <Building2 size={16} className="text-crimson-on-burgundy" />
               </div>
-              <span className="text-crimson text-xs tracking-[0.3em] uppercase font-semibold">For Companies</span>
+              <span className="text-crimson-on-burgundy text-xs tracking-[0.3em] uppercase font-semibold">For Companies</span>
             </div>
             <h3 className="font-serif text-offwhite font-black text-4xl mb-4">Consulting</h3>
             <p className="text-offwhite/65 text-sm leading-relaxed mb-8">
@@ -356,7 +356,7 @@ export default function Services() {
             <ul className="space-y-3 mb-8 flex-1" aria-label="Consulting includes">
               {consultingFeatures.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm text-offwhite/75">
-                  <Check size={14} className="text-crimson mt-0.5 flex-shrink-0" />
+                  <Check size={14} className="text-crimson-on-burgundy mt-0.5 flex-shrink-0" />
                   {f}
                 </li>
               ))}
@@ -379,7 +379,7 @@ export default function Services() {
               aria-controls="consulting-form"
               className={`w-full py-4 flex items-center justify-center gap-3 text-sm tracking-widest uppercase font-semibold transition-all duration-200 focus-visible:outline-offwhite ${
                 openForm === "consulting"
-                  ? "bg-crimson text-offwhite"
+                  ? "bg-crimson-on-burgundy text-offwhite"
                   : "border border-white/30 text-offwhite hover:border-offwhite hover:bg-white/5"
               }`}
             >
@@ -402,7 +402,7 @@ export default function Services() {
           <div className="border border-t-0 border-white/15 p-8 lg:p-10">
             <div className="max-w-2xl">
               <h4 className="font-serif text-offwhite font-bold text-2xl mb-2 flex items-center gap-3">
-                <Users size={20} className="text-crimson" />
+                <Users size={20} className="text-crimson-on-burgundy" />
                 Book a Mentoring Session
               </h4>
               <p className="text-offwhite/50 text-sm mb-8">
@@ -489,14 +489,14 @@ export default function Services() {
                     />
                   </div>
                   {mentoring.error && (
-                    <p role="alert" className="text-crimson-light text-xs flex items-center gap-1.5">
+                    <p role="alert" className="text-crimson-on-burgundy-light text-xs flex items-center gap-1.5">
                       <AlertCircle size={12} />
                       {mentoring.error}
                     </p>
                   )}
                   <button
                     type="submit"
-                    className="px-10 py-4 bg-crimson text-offwhite text-sm tracking-widest uppercase font-semibold hover:bg-crimson-light transition-colors focus-visible:outline-offwhite"
+                    className="px-10 py-4 bg-crimson-on-burgundy text-offwhite text-sm tracking-widest uppercase font-semibold hover:bg-crimson-on-burgundy-light transition-colors focus-visible:outline-offwhite"
                   >
                     Send Booking Request
                   </button>
@@ -519,7 +519,7 @@ export default function Services() {
           <div className="border border-t-0 border-white/15 p-8 lg:p-10">
             <div className="max-w-2xl">
               <h4 className="font-serif text-offwhite font-bold text-2xl mb-2 flex items-center gap-3">
-                <Building2 size={20} className="text-crimson" />
+                <Building2 size={20} className="text-crimson-on-burgundy" />
                 Consulting Inquiry
               </h4>
               <p className="text-offwhite/50 text-sm mb-8">
@@ -575,14 +575,14 @@ export default function Services() {
                     />
                   </div>
                   {consulting.error && (
-                    <p role="alert" className="text-crimson-light text-xs flex items-center gap-1.5">
+                    <p role="alert" className="text-crimson-on-burgundy-light text-xs flex items-center gap-1.5">
                       <AlertCircle size={12} />
                       {consulting.error}
                     </p>
                   )}
                   <button
                     type="submit"
-                    className="px-10 py-4 bg-offwhite text-burgundy text-sm tracking-widest uppercase font-semibold hover:bg-white transition-colors focus-visible:outline-crimson"
+                    className="px-10 py-4 bg-offwhite text-burgundy text-sm tracking-widest uppercase font-semibold hover:bg-white transition-colors focus-visible:outline-crimson-on-burgundy"
                   >
                     Send Consulting Inquiry
                   </button>

@@ -33,7 +33,7 @@ export default function Footer() {
                 <span className="font-serif font-black text-offwhite text-lg tracking-widest uppercase block">
                   SARDINHA
                 </span>
-                <span className="text-crimson text-xs tracking-[0.3em] uppercase font-light">DESIGN</span>
+                <span className="text-crimson-on-dark text-xs tracking-[0.3em] uppercase font-light">DESIGN</span>
               </div>
             </div>
             <p className="text-offwhite/50 text-sm leading-relaxed max-w-xs">
@@ -54,7 +54,7 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 text-offwhite/50 hover:text-offwhite transition-colors focus-visible:outline-crimson group"
                     >
-                      <Icon size={16} className="group-hover:text-crimson transition-colors" />
+                      <Icon size={16} className="group-hover:text-crimson-on-dark transition-colors" />
                       {label}
                     </a>
                   </li>
@@ -72,7 +72,7 @@ export default function Footer() {
           <button
             onClick={scrollTop}
             aria-label="Scroll back to top"
-            className="w-10 h-10 border border-white/20 flex items-center justify-center text-offwhite/50 hover:border-crimson hover:text-offwhite transition-all focus-visible:outline-crimson"
+            className="w-10 h-10 border border-white/20 flex items-center justify-center text-offwhite/50 hover:border-crimson-on-dark hover:text-offwhite transition-all focus-visible:outline-crimson"
           >
             <ArrowUp size={16} />
           </button>

@@ -39,14 +39,14 @@ export default function Nav({ activeSection, onNavigate }: NavProps) {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <button
             onClick={() => handleNav("hero")}
-            className="flex items-center gap-3 group focus-visible:outline-crimson"
+            className="flex items-center gap-3 group focus-visible:outline-crimson-on-burgundy"
             aria-label="Sardinha Design – Go to top"
           >
             <img src={faviconImg} alt="Sardinha Design Logo" className="w-8 h-8" />
             <span className="font-serif font-black text-offwhite text-lg tracking-widest uppercase">
               SARDINHA
             </span>
-            <span className="hidden sm:block text-crimson text-xs tracking-[0.3em] uppercase font-light mt-0.5">
+            <span className="hidden sm:block text-crimson-on-burgundy text-xs tracking-[0.3em] uppercase font-light mt-0.5">
               DESIGN
             </span>
           </button>
@@ -57,9 +57,9 @@ export default function Nav({ activeSection, onNavigate }: NavProps) {
                 key={id}
                 onClick={() => handleNav(id)}
                 aria-current={activeSection === id ? "page" : undefined}
-                className={`px-4 py-2 text-sm tracking-widest uppercase font-medium transition-all duration-200 focus-visible:outline-crimson ${
+                className={`px-4 py-2 text-sm tracking-widest uppercase font-medium transition-all duration-200 focus-visible:outline-crimson-on-burgundy ${
                   activeSection === id
-                    ? "text-crimson"
+                    ? "text-crimson-on-burgundy"
                     : "text-offwhite/70 hover:text-offwhite"
                 }`}
               >
@@ -69,7 +69,7 @@ export default function Nav({ activeSection, onNavigate }: NavProps) {
           </nav>
 
           <button
-            className="lg:hidden text-offwhite p-2 focus-visible:outline-crimson"
+            className="lg:hidden text-offwhite p-2 focus-visible:outline-crimson-on-burgundy"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -93,8 +93,8 @@ export default function Nav({ activeSection, onNavigate }: NavProps) {
               <button
                 key={id}
                 onClick={() => handleNav(id)}
-                className={`text-left py-3 px-4 text-sm tracking-widest uppercase font-medium border-b border-white/5 transition-colors duration-200 focus-visible:outline-crimson ${
-                  activeSection === id ? "text-crimson" : "text-offwhite/80 hover:text-offwhite"
+                className={`text-left py-3 px-4 text-sm tracking-widest uppercase font-medium border-b border-white/5 transition-colors duration-200 focus-visible:outline-crimson-on-burgundy ${
+                  activeSection === id ? "text-crimson-on-burgundy" : "text-offwhite/80 hover:text-offwhite"
                 }`}
               >
                 {label}

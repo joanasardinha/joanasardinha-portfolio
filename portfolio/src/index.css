@@ -11,6 +11,8 @@
   --color-crimson: #C81D25;
   --color-crimson-dark: #A31C24;
   --color-crimson-light: #E03040;
+  --color-crimson-on-dark: #FF2933;
+  --color-crimson-on-burgundy: #FF4049;
   --color-offwhite: #FDFBFB;
   --color-offwhite-dark: #F0EBEB;
   --color-charcoal: #1A1A1A;
@@ -34,13 +36,13 @@ html {
 }
 
 :focus-visible {
-  outline: 3px solid #C81D25;
+  outline: 3px solid var(--color-crimson);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 ::selection {
-  background: #C81D25;
+  background: var(--color-crimson);
   color: #FDFBFB;
 }
 
@@ -53,14 +55,14 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C81D25;
+  background: var(--color-crimson);
   border-radius: 3px;
 }
 
 .editorial-line {
   width: 3px;
   height: 40px;
-  background: #C81D25;
+  background: var(--color-crimson);
   display: inline-block;
 }
 
@@ -74,7 +76,7 @@ html {
 }
 
 .tab-active {
-  background: #C81D25;
+  background: var(--color-crimson);
   color: #FDFBFB;
 }
 
