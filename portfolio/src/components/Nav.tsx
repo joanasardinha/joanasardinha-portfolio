@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import faviconImg from "../imports/favicon.png";
+import faviconImg from "../imports/favicon.jpg";
 
 interface NavProps {
   activeSection: string;

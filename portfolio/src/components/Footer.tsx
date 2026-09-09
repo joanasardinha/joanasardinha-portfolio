@@ -1,5 +1,5 @@
 import { ArrowUp, Link2, Rss, Globe } from "lucide-react";
-import faviconImg from "../imports/favicon.png";
+import faviconImg from "../imports/favicon.jpg";
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });

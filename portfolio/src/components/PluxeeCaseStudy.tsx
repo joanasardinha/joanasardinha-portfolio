@@ -3,14 +3,14 @@ import { X, Lock, Mail, Eye, EyeOff, ArrowRight, CheckCircle2, AlertCircle, Shie
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
 import workshopImg from "@/imports/C186DFB0-BF81-4D2A-9A92-A99ED28E77D9_1_102_o.jpeg";
-import awardDetailImg from "@/imports/Award_Detail.png";
-import awardsListImg from "@/imports/Awards_full_list.png";
-import homepageImg from "@/imports/Homepage.png";
-import recognitionImg from "@/imports/Recognition-1.png";
-import sendThanksImg from "@/imports/Send_thanks_recognition.png";
-import successMsgImg from "@/imports/Success_Message.png";
-import walletRedeemImg from "@/imports/Wallet-1.png";
-import walletImg from "@/imports/Wallet.png";
+import awardDetailImg from "@/imports/Award_Detail.jpg";
+import awardsListImg from "@/imports/Awards_full_list.jpg";
+import homepageImg from "@/imports/Homepage.jpg";
+import recognitionImg from "@/imports/Recognition-1.jpg";
+import sendThanksImg from "@/imports/Send_thanks_recognition.jpg";
+import successMsgImg from "@/imports/Success_Message.jpg";
+import walletRedeemImg from "@/imports/Wallet-1.jpg";
+import walletImg from "@/imports/Wallet.jpg";
 
 const NAVY   = "#191645";
 const NAVY2  = "#120F38";

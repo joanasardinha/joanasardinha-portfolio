@@ -5,14 +5,14 @@ import {
 } from "lucide-react";
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
-import kioskImg from "../imports/Gemini_Generated_Image_yi0wnsyi0wnsyi0w_1.png";
-import room304Img from "../imports/hospital-kiosk-ui-step2.png";
-import nursingImg from "../imports/Gemini_Generated_Image_94rj7h94rj7h94rj_1.png";
-import screen1Img from "../imports/Hospital_Patient_Intake_Interface-1.png";
-import screen2Img from "../imports/Hospital_Patient_Intake_Interface-2.png";
-import screen3Img from "../imports/Hospital_Patient_Intake_Interface-3.png";
-import screen4Img from "../imports/Hospital_Patient_Intake_Interface-4.png";
-import kioskStep1Img from "../imports/hospital-kiosk-step1.png";
+import kioskImg from "../imports/Gemini_Generated_Image_yi0wnsyi0wnsyi0w_1.jpg";
+import room304Img from "../imports/hospital-kiosk-ui-step2.jpg";
+import nursingImg from "../imports/Gemini_Generated_Image_94rj7h94rj7h94rj_1.jpg";
+import screen1Img from "../imports/Hospital_Patient_Intake_Interface-1.jpg";
+import screen2Img from "../imports/Hospital_Patient_Intake_Interface-2.jpg";
+import screen3Img from "../imports/Hospital_Patient_Intake_Interface-3.jpg";
+import screen4Img from "../imports/Hospital_Patient_Intake_Interface-4.jpg";
+import kioskStep1Img from "../imports/hospital-kiosk-step1.jpg";
 
 const NAVY  = "#030C23";
 const NAVY2 = "#0A1931";

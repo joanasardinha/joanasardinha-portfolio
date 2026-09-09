@@ -6,9 +6,9 @@ import {
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import PasswordModal from "./PasswordModal";
 import springLogo from "../imports/spring-logo.svg";
-import springMascot from "../imports/spring-mascot.png";
+import springMascot from "../imports/spring-mascot.jpg";
 import springMockup from "../imports/spring-mockup.svg";
-import springMidFiScreen from "../imports/spring-midfi-screen.png";
+import springMidFiScreen from "../imports/spring-midfi-screen.jpg";
 import springDepositsScreen from "../imports/spring-deposits-screen.jpg";
 import springHandSketch from "../imports/spring-hand-sketch.jpg";
 

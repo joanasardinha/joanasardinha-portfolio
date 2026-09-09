@@ -1,5 +1,5 @@
 import { ArrowDown, Sparkles } from "lucide-react";
-import heroPhoto from "../imports/Gemini_Generated_Image_vn5cndvn5cndvn5c__1_.png";
+import heroPhoto from "../imports/Gemini_Generated_Image_vn5cndvn5cndvn5c__1_.jpg";
 
 interface HeroProps {
   onNavigate: (id: string) => void;
