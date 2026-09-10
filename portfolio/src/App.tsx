@@ -8,7 +8,7 @@ import Articles from "./components/Articles";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
 import PhotographyGallery from "./components/PhotographyGallery";
-import GalleryAdmin from "./components/GalleryAdmin";
+import AdminDashboard from "./components/AdminDashboard";
 import ProjectPage from "./components/ProjectPage";
 
 const sectionIds = ["hero", "work", "experience", "articles", "services"];
@@ -65,7 +65,7 @@ export default function App() {
 
   if (projectId === "admin") {
     return (
-      <GalleryAdmin />
+      <AdminDashboard />
     );
   }
 
