@@ -1,14 +1,7 @@
 {
-  "buildCommand": "cd portfolio && npm run build",
-  "outputDirectory": "portfolio/dist",
-  "installCommand": "cd portfolio && npm install",
-  "framework": "vite",
-  "env": {
-    "VITE_CONFIG_NATIVE_IGNORE_WARNING": "true"
-  },
   "rewrites": [
     {
-      "source": "/projects/:id",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
