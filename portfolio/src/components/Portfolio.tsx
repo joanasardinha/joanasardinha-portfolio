@@ -7,6 +7,7 @@ import HospitalCaseStudy from "./HospitalCaseStudy";
 import MobilityCaseStudy from "./MobilityCaseStudy";
 import AgenticDSCaseStudy from "./AgenticDSCaseStudy";
 import PluxeeCaseStudy from "./PluxeeCaseStudy";
+import { getPortfolioData } from "../data/portfolio";
 
 interface Project {
   id: string;
@@ -22,7 +23,7 @@ interface Project {
   year: string;
 }
 
-const projects: Project[] = [
+const defaultProjects: Project[] = [
   {
     id: "volta",
     title: "Spring Savings — Mobile App",
@@ -132,6 +133,29 @@ const projects: Project[] = [
   },
 ];
 
+// Merge admin projects with display attributes
+const getMergedProjects = (): Project[] => {
+  const data = getPortfolioData();
+  return data.projects
+    .filter((p) => p.isPublished)
+    .map((adminProject) => {
+      const defaults = defaultProjects.find((dp) => dp.id === adminProject.id);
+      return {
+        id: adminProject.id,
+        title: adminProject.title,
+        subtitle: adminProject.description,
+        category: defaults?.category || "Others",
+        tags: adminProject.tags,
+        locked: !!adminProject.password,
+        hasCaseStudy: defaults?.hasCaseStudy || false,
+        isGallery: defaults?.isGallery || false,
+        gradient: defaults?.gradient || "linear-gradient(135deg, #0B0B0C 0%, #1a1a1c 100%)",
+        accentColor: defaults?.accentColor || "#C81D25",
+        year: adminProject.year,
+      };
+    });
+};
+
 const categories = ["All", "Branding", "UX/UI", "Agentic UX", "Research", "Landing Pages", "Photography", "Others"];
 
 interface ModalState {
@@ -172,8 +196,13 @@ export default function Portfolio({ onOpenPhotography }: { onOpenPhotography?: (
   const [activeFilter, setActiveFilter] = useState("All");
   const [modal, setModal] = useState<ModalState>(initModal);
   const [showAll, setShowAll] = useState(false);
+  const [projects, setProjects] = useState<Project[]>([]);
   const INITIAL_SHOW = useInitialShow();
   const [caseStudyOpen, setCaseStudyOpen] = useState<"medis" | "devsummit" | "spring" | "hospital" | "mobility" | "agenticds" | "pluxee" | null>(null);
+
+  useEffect(() => {
+    setProjects(getMergedProjects());
+  }, []);
 
   const filtered = activeFilter === "All" ? projects : projects.filter((p) => p.category === activeFilter);
   const displayed = showAll ? filtered : filtered.slice(0, INITIAL_SHOW);

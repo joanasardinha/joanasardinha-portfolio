@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Grid, Film, ChevronLeft, ChevronRight, X, Info, Maximize2, Camera, MapPin } from "lucide-react";
+import { getPortfolioData } from "../data/portfolio";
 
 // Import all photos statically for Vite bundling
 const photoModules = import.meta.glob<{ default: string }>('/src/imports/photo-*.jpg', { eager: true });
@@ -115,15 +116,26 @@ export default function PhotographyGallery() {
   const [layout, setLayout] = useState<LayoutMode>("masonry");
   const [activeCategory, setActiveCategory] = useState("All Stories");
   const [filteredPhotos, setFilteredPhotos] = useState(photos);
+  const [hiddenPhotos, setHiddenPhotos] = useState<Set<number>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const data = getPortfolioData();
+    setHiddenPhotos(new Set(data.hiddenPhotos));
+  }, []);
+
+  useEffect(() => {
+    const visiblePhotos = photos.filter((p) => {
+      const photoNum = parseInt(p.id.replace("photo-", ""));
+      return !hiddenPhotos.has(photoNum);
+    });
+
     if (activeCategory === "All Stories") {
-      setFilteredPhotos(photos);
+      setFilteredPhotos(visiblePhotos);
     } else {
-      setFilteredPhotos(photos.filter((p) => p.category === activeCategory));
+      setFilteredPhotos(visiblePhotos.filter((p) => p.category === activeCategory));
     }
-  }, [activeCategory]);
+  }, [activeCategory, hiddenPhotos]);
 
   return (
     <section className="min-h-screen bg-offwhite py-20">
