@@ -8,6 +8,7 @@ import Articles from "./components/Articles";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
 import PhotographyGallery from "./components/PhotographyGallery";
+import GalleryAdmin from "./components/GalleryAdmin";
 import ProjectPage from "./components/ProjectPage";
 
 const sectionIds = ["hero", "work", "experience", "articles", "services"];
@@ -20,6 +21,10 @@ export default function App() {
 
   useEffect(() => {
     const pathname = window.location.pathname;
+    if (pathname === "/admin") {
+      setProjectId("admin");
+      return;
+    }
     const match = pathname.match(/^\/projects\/(.+)$/);
     if (match) {
       setProjectId(match[1]);
@@ -57,6 +62,12 @@ export default function App() {
       window.scrollTo({ top, behavior: "smooth" });
     }
   };
+
+  if (projectId === "admin") {
+    return (
+      <GalleryAdmin />
+    );
+  }
 
   if (projectId) {
     return (

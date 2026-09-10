@@ -15,7 +15,8 @@
       "Bash(find /Users/joana.sardinha -path \"*portfolio/src/components\" -type d 2>/dev/null)",
       "Bash(brew install *)",
       "Bash(python3)",
-      "Bash(pip3 install *)"
+      "Bash(pip3 install *)",
+      "Bash(node \"/private/tmp/claude-501/bundled-skills/2.1.260/eaceb34e8785175d74ff78905c7974c0/design/seed-canvas.mjs\" --template \"/private/tmp/claude-501/bundled-skills/2.1.260/eaceb34e8785175d74ff78905c7974c0/design/payload.template.html\" --out photography-manager.html --title \"Photography Gallery Manager\" --artboard Main.dc.html)"
     ]
   }
 }
