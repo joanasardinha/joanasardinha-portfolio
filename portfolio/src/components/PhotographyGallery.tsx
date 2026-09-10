@@ -4,12 +4,6 @@ import { Grid, Film, ChevronLeft, ChevronRight, X, Info, Maximize2, Camera, MapP
 // Import all photos statically for Vite bundling
 const photoModules = import.meta.glob<{ default: string }>('../imports/photo-*.jpg', { eager: true });
 
-// Debug: Log the available keys
-if (typeof window !== 'undefined') {
-  console.log('Photo modules keys:', Object.keys(photoModules).slice(0, 5));
-  console.log('Total photo modules:', Object.keys(photoModules).length);
-}
-
 type Orientation = "landscape" | "portrait";
 type LayoutMode = "masonry" | "carousel";
 

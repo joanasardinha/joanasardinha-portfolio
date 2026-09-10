@@ -7,7 +7,7 @@ import Learning from "./components/Learning";
 import Articles from "./components/Articles";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
-import PhotographyPage from "./components/PhotographyPage";
+import PhotographyGallery from "./components/PhotographyGallery";
 import ProjectPage from "./components/ProjectPage";
 
 const sectionIds = ["hero", "work", "experience", "articles", "services"];
@@ -71,15 +71,7 @@ export default function App() {
 
   if (photographyOpen) {
     return (
-      <PhotographyPage
-        onBack={() => {
-          setPhotographyOpen(false);
-          setTimeout(() => {
-            const el = document.getElementById("work");
-            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 50);
-        }}
-      />
+      <PhotographyGallery />
     );
   }
 
