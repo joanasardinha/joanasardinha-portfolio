@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
 import { Eye, EyeOff, Check } from "lucide-react";
+import { getPortfolioData, savePortfolioData } from "../../data/portfolio";
 
 export default function GalleryManager() {
   const [hiddenPhotos, setHiddenPhotos] = useState<Set<number>>(new Set());
   const [previewPhoto, setPreviewPhoto] = useState<number | null>(null);
+  const [photoLoadError, setPhotoLoadError] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    const saved = localStorage.getItem("hiddenPhotos");
-    if (saved) {
-      setHiddenPhotos(new Set(JSON.parse(saved)));
-    }
+    loadHiddenPhotos();
   }, []);
+
+  const loadHiddenPhotos = () => {
+    const data = getPortfolioData();
+    setHiddenPhotos(new Set(data.hiddenPhotos));
+  };
 
   const togglePhoto = (photoNum: number) => {
     const newHidden = new Set(hiddenPhotos);
@@ -20,7 +24,11 @@ export default function GalleryManager() {
       newHidden.add(photoNum);
     }
     setHiddenPhotos(newHidden);
-    localStorage.setItem("hiddenPhotos", JSON.stringify([...newHidden]));
+
+    // Save to portfolio data
+    const data = getPortfolioData();
+    data.hiddenPhotos = Array.from(newHidden);
+    savePortfolioData(data);
   };
 
   const publishAll = () => {
@@ -87,13 +95,21 @@ export default function GalleryManager() {
             className="max-w-2xl bg-white rounded-lg overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="aspect-video bg-charcoal/20 flex items-center justify-center relative">
-              <div className="text-center">
-                <p className="text-charcoal/40 text-sm">Photo #{previewPhoto}</p>
-                <p className="text-charcoal/30 text-xs mt-2">
-                  (Real preview will load from portfolio)
-                </p>
-              </div>
+            <div className="aspect-video bg-charcoal/10 flex items-center justify-center relative overflow-hidden">
+              <img
+                src={`/assets/photo-${previewPhoto}.jpg`}
+                alt={`Photo ${previewPhoto}`}
+                className="w-full h-full object-cover"
+                onError={() => setPhotoLoadError(prev => new Set([...prev, previewPhoto]))}
+              />
+              {photoLoadError.has(previewPhoto) && (
+                <div className="text-center">
+                  <p className="text-charcoal/60 text-sm">Photo #{ previewPhoto}</p>
+                  <p className="text-charcoal/40 text-xs mt-2">
+                    (Image file not found)
+                  </p>
+                </div>
+              )}
             </div>
             <div className="p-4 bg-offwhite border-t border-charcoal/10">
               <p className="text-sm text-charcoal/70 mb-3">
