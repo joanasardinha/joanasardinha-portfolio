@@ -1,0 +1,7 @@
+{
+  "name": "joanasardinha-portfolio",
+  "private": true,
+  "workspaces": [
+    "portfolio"
+  ]
+}
