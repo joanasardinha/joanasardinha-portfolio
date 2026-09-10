@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { Grid, Film, ChevronLeft, ChevronRight, X, Info, Maximize2, Camera, MapPin } from "lucide-react";
 
 // Import all photos statically for Vite bundling
-const photoModules = import.meta.glob<{ default: string }>('../imports/photo-*.jpg', { eager: true });
+const photoModules = import.meta.glob<{ default: string }>('/src/imports/photo-*.jpg', { eager: true });
 
 type Orientation = "landscape" | "portrait";
 type LayoutMode = "masonry" | "carousel";
@@ -83,7 +83,7 @@ const generatePhotos = (): Photo[] => {
     const isLandscape = Math.random() > 0.4;
 
     // Get the photo URL from imported modules
-    const photoKey = `../imports/photo-${photoNum}.jpg`;
+    const photoKey = `/src/imports/photo-${photoNum}.jpg`;
     const photoUrl = photoModules[photoKey]?.default || '';
 
     return {
