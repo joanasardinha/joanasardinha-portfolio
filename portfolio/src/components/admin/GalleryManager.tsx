@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Eye, EyeOff, Check } from "lucide-react";
 import { getPortfolioData, savePortfolioData } from "../../data/portfolio";
 
+const photoModules = import.meta.glob<{ default: string }>('/src/imports/photo-*.jpg', { eager: true });
+
 export default function GalleryManager() {
   const [hiddenPhotos, setHiddenPhotos] = useState<Set<number>>(new Set());
   const [previewPhoto, setPreviewPhoto] = useState<number | null>(null);
@@ -97,7 +99,7 @@ export default function GalleryManager() {
           >
             <div className="aspect-video bg-charcoal/10 flex items-center justify-center relative overflow-hidden">
               <img
-                src={`/assets/photo-${previewPhoto}.jpg`}
+                src={photoModules[`/src/imports/photo-${previewPhoto}.jpg`]?.default || ''}
                 alt={`Photo ${previewPhoto}`}
                 className="w-full h-full object-cover"
                 onError={() => setPhotoLoadError(prev => new Set([...prev, previewPhoto]))}
@@ -138,7 +140,7 @@ export default function GalleryManager() {
           return (
             <button
               key={photoNum}
-              onClick={() => togglePhoto(photoNum)}
+              onClick={() => setPreviewPhoto(photoNum)}
               className={`aspect-square rounded border-2 transition-all overflow-hidden relative group ${
                 isHidden
                   ? "border-crimson bg-crimson/10"
