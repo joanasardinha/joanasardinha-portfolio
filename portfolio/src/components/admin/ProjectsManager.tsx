@@ -1,41 +1,41 @@
 import { useState, useEffect } from "react";
-import { Trash2, Edit2, Plus, Upload, X } from "lucide-react";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  company: string;
-  year: string;
-  image: string;
-}
+import { Trash2, Edit2, Plus, Upload, Download, RotateCcw } from "lucide-react";
+import { getPortfolioData, savePortfolioData, exportPortfolioData, importPortfolioData, defaultPortfolioData, type Project, type PortfolioData } from "../../data/portfolio";
 
 export default function ProjectsManager() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
+  const [unsavedChanges, setUnsavedChanges] = useState(false);
   const [formData, setFormData] = useState<Project>({
     id: "",
     title: "",
     description: "",
+    slug: "",
     tags: [],
     company: "",
     year: new Date().getFullYear().toString(),
     image: "",
+    isPublished: true,
   });
-  const [imagePreview, setImagePreview] = useState("");
 
   useEffect(() => {
-    const saved = localStorage.getItem("projects");
-    if (saved) {
-      setProjects(JSON.parse(saved));
-    }
+    loadProjects();
   }, []);
 
+  const loadProjects = () => {
+    const data = getPortfolioData();
+    setProjects(data.projects);
+    setUnsavedChanges(false);
+  };
+
   const saveProjects = (updatedProjects: Project[]) => {
+    const data = getPortfolioData();
+    data.projects = updatedProjects;
+    savePortfolioData(data);
     setProjects(updatedProjects);
-    localStorage.setItem("projects", JSON.stringify(updatedProjects));
+    setUnsavedChanges(false);
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,8 +52,8 @@ export default function ProjectsManager() {
   };
 
   const handleCreate = () => {
-    if (!formData.title || !formData.description) {
-      alert("Please fill in title and description");
+    if (!formData.title || !formData.description || !formData.slug) {
+      alert("Please fill in title, description, and slug");
       return;
     }
 
@@ -87,15 +87,51 @@ export default function ProjectsManager() {
     setIsCreating(false);
   };
 
+  const handleResetToDefaults = () => {
+    if (confirm("Reset all projects to defaults? This will overwrite your changes.")) {
+      saveProjects(defaultPortfolioData.projects);
+    }
+  };
+
+  const handleExportData = () => {
+    const json = exportPortfolioData();
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `portfolio-backup-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImportData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const content = event.target?.result as string;
+        if (importPortfolioData(content)) {
+          loadProjects();
+          alert("Portfolio data imported successfully!");
+        } else {
+          alert("Failed to import portfolio data. Invalid format.");
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+
   const resetForm = () => {
     setFormData({
       id: "",
       title: "",
       description: "",
+      slug: "",
       tags: [],
       company: "",
       year: new Date().getFullYear().toString(),
       image: "",
+      isPublished: true,
     });
     setImagePreview("");
   };
@@ -108,18 +144,47 @@ export default function ProjectsManager() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-10">
-      {/* Create Button */}
+      {/* Controls */}
       {!isCreating && !editingId && (
-        <button
-          onClick={() => {
-            setIsCreating(true);
-            resetForm();
-          }}
-          className="mb-8 px-6 py-2 bg-crimson text-offwhite rounded font-semibold hover:bg-crimson/90 transition-all flex items-center gap-2"
-        >
-          <Plus size={18} />
-          Create New Project
-        </button>
+        <div className="mb-8 flex gap-3 flex-wrap">
+          <button
+            onClick={() => {
+              setIsCreating(true);
+              resetForm();
+            }}
+            className="px-6 py-2 bg-crimson text-offwhite rounded font-semibold hover:bg-crimson/90 transition-all flex items-center gap-2"
+          >
+            <Plus size={18} />
+            Create New Project
+          </button>
+
+          <button
+            onClick={handleExportData}
+            className="px-6 py-2 border border-charcoal/20 text-charcoal hover:border-charcoal transition-all rounded flex items-center gap-2"
+          >
+            <Download size={18} />
+            Export Backup
+          </button>
+
+          <label className="px-6 py-2 border border-charcoal/20 text-charcoal hover:border-charcoal transition-all rounded flex items-center gap-2 cursor-pointer">
+            <Upload size={18} />
+            Import Backup
+            <input
+              type="file"
+              accept=".json"
+              onChange={handleImportData}
+              className="hidden"
+            />
+          </label>
+
+          <button
+            onClick={handleResetToDefaults}
+            className="px-6 py-2 border border-charcoal/20 text-charcoal/60 hover:text-charcoal hover:border-charcoal transition-all rounded flex items-center gap-2"
+          >
+            <RotateCcw size={18} />
+            Reset Defaults
+          </button>
+        </div>
       )}
 
       {/* Form */}
@@ -170,6 +235,14 @@ export default function ProjectsManager() {
               className="w-full px-4 py-2 border border-charcoal/20 rounded focus:outline-none focus:border-charcoal"
             />
 
+            <input
+              type="text"
+              placeholder="URL Slug (e.g. spring-savings)"
+              value={formData.slug}
+              onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+              className="w-full px-4 py-2 border border-charcoal/20 rounded focus:outline-none focus:border-charcoal text-sm"
+            />
+
             <textarea
               placeholder="Project Description"
               value={formData.description}
@@ -206,6 +279,16 @@ export default function ProjectsManager() {
               }
               className="w-full px-4 py-2 border border-charcoal/20 rounded focus:outline-none focus:border-charcoal"
             />
+
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.isPublished}
+                onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
+                className="w-4 h-4 rounded"
+              />
+              <span className="text-sm font-semibold text-charcoal">Published (visible on website)</span>
+            </label>
 
             {/* Actions */}
             <div className="flex gap-2 justify-end pt-4 border-t border-charcoal/10">
